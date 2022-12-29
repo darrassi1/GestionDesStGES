@@ -1,0 +1,12 @@
+# Created by https://www.toptal.com/developers/gitignore/api/symfony
+# Edit at https://www.toptal.com/developers/gitignore?templates=symfony
+
+### Symfony ###
+# Cache and logs (Symfony2)
+/app/cache/*
+/app/logs/*
+!app/cache/.gitkeep
+!app/logs/.gitkeep
+
+# Email spool folder
+/app/spool/*
