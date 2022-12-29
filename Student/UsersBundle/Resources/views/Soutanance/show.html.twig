@@ -1,0 +1,142 @@
+{% extends 'StudentUsersBundle::layout.html.twig' %}
+
+{% block title %}   GestionStages    {% endblock %}
+
+{% block css %}
+{% endblock %}
+
+ {% block Menu %}
+     <ul class="main-navigation-menu">
+         <li>
+             <a href="{{ path('student_users_homepage') }}">
+                 <div class="item-content">
+                     <div class="item-media">
+                         <i class="ti-home"></i>
+                     </div>
+                     <div class="item-inner">
+                         <span class="title"> Dashboard </span>
+                     </div>
+                 </div>
+             </a>
+         </li>
+         <li>
+             <a href="{{ path('student_users_Profile') }}">
+                 <div class="item-content">
+                     <div class="item-media">
+                         <i class="ti-settings"></i>
+                     </div>
+                     <div class="item-inner">
+                         <span class="title"> Profile </span>
+                     </div>
+                 </div>
+             </a>
+         </li>
+         <li>
+             <a href="{{ path('student_users_Messages') }}">
+                 <div class="item-content">
+                     <div class="item-media">
+                         <i class="ti-settings"></i>
+                     </div>
+                     <div class="item-inner">
+                         <span class="title"> Messages </span>
+                     </div>
+                 </div>
+             </a>
+         </li>
+         <li>
+             <a href="{{ path('student_users_Agenda') }}">
+                 <div class="item-content">
+                     <div class="item-media">
+                         <i class="ti-settings"></i>
+                     </div>
+                     <div class="item-inner">
+                         <span class="title"> Agenda </span>
+                     </div>
+                 </div>
+             </a>
+         </li>
+         <li>
+             <a href="{{ path('StageStudent') }}">
+                 <div class="item-content">
+                     <div class="item-media">
+                         <i class="ti-settings"></i>
+                     </div>
+                     <div class="item-inner">
+                         <span class="title">Gestion Stages </span>
+                     </div>
+                 </div>
+             </a>
+         </li>
+         <li  class="active open">
+             <a href="{{ path('SoutananceStudent') }}">
+                 <div class="item-content">
+                     <div class="item-media">
+                         <i class="ti-settings"></i>
+                     </div>
+                     <div class="item-inner">
+                         <span class="title">Gestion soutenances </span>
+                     </div>
+                 </div>
+             </a>
+         </li>
+         <li >
+             <a href="{{ path('DocumentStudent') }}">
+                 <div class="item-content">
+                     <div class="item-media">
+                         <i class="ti-settings"></i>
+                     </div>
+                     <div class="item-inner">
+                         <span class="title">Gestion Documents </span>
+                     </div>
+                 </div>
+             </a>
+         </li>
+
+
+     </ul>
+
+ {% endblock %}
+{% block pagetitle %}
+    <section id="page-title" class="padding-top-15 padding-bottom-15">
+        <div class="row">
+            <div class="col-sm-7">
+                <h1 class="mainTitle">GestionStages</h1>
+                <span class="mainDescription">overview &amp; stats </span>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block body -%}
+    <h1>Soutanance</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Idsoutenance</th>
+                <td>{{ entity.idSoutenance }}</td>
+            </tr>
+            <tr>
+                <th>Datesoutenance</th>
+                <td>{{ entity.dateSoutenance|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Sallesoutenance</th>
+                <td>{{ entity.salleSoutenance }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('SoutananceStudent') }}">
+            Back to the list
+        </a>
+    </li>
+
+</ul>
+{% endblock %}
+
+
+{% block javascript %}
+{% endblock %}

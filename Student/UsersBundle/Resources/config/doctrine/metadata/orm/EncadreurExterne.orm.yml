@@ -1,0 +1,50 @@
+EncadreurExterne:
+    type: entity
+    table: encadreur_externe
+    indexes:
+        Id_Societe:
+            columns:
+                - Id_Societe
+        NCIN:
+            columns:
+                - NCIN
+    id:
+        idEncadreure:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: Id_encadreurE
+            generator:
+                strategy: IDENTITY
+    fields:
+        poste:
+            type: string
+            nullable: false
+            length: 120
+            options:
+                fixed: false
+            column: Poste
+    manyToOne:
+        idSociete:
+            targetEntity: Societe
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                Id_Societe:
+                    referencedColumnName: Id_Societe
+            orphanRemoval: false
+        ncin:
+            targetEntity: Encadreur
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                NCIN:
+                    referencedColumnName: NCIN
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

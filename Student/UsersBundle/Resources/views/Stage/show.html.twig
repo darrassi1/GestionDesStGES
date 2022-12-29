@@ -1,0 +1,144 @@
+{% extends 'StudentUsersBundle::layout.html.twig' %}
+
+{% block title %}   GestionStages    {% endblock %}
+
+{% block css %}
+    <link href="{{ asset('Backoffice/vendor/select2/select2.min.css') }}" rel="stylesheet" media="screen">
+    <link href="{{ asset('Backoffice/vendor/DataTables/css/DT_bootstrap.css') }}" rel="stylesheet" media="screen">
+{% endblock %}
+{% block Menu %}
+    <ul class="main-navigation-menu">
+        <li>
+            <a href="{{ path('student_users_homepage') }}">
+                <div class="item-content">
+                    <div class="item-media">
+                        <i class="ti-home"></i>
+                    </div>
+                    <div class="item-inner">
+                        <span class="title"> Dashboard </span>
+                    </div>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('student_users_Profile') }}">
+                <div class="item-content">
+                    <div class="item-media">
+                        <i class="ti-settings"></i>
+                    </div>
+                    <div class="item-inner">
+                        <span class="title"> Profile </span>
+                    </div>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('student_users_Messages') }}">
+                <div class="item-content">
+                    <div class="item-media">
+                        <i class="ti-settings"></i>
+                    </div>
+                    <div class="item-inner">
+                        <span class="title"> Messages </span>
+                    </div>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('student_users_Agenda') }}">
+                <div class="item-content">
+                    <div class="item-media">
+                        <i class="ti-settings"></i>
+                    </div>
+                    <div class="item-inner">
+                        <span class="title"> Agenda </span>
+                    </div>
+                </div>
+            </a>
+        </li>
+        <li  class="active open">
+            <a href="{{ path('StageStudent') }}">
+                <div class="item-content">
+                    <div class="item-media">
+                        <i class="ti-settings"></i>
+                    </div>
+                    <div class="item-inner">
+                        <span class="title">Gestion Stages </span>
+                    </div>
+                </div>
+            </a>
+        </li>
+        <li >
+            <a href="{{ path('SoutananceStudent') }}">
+                <div class="item-content">
+                    <div class="item-media">
+                        <i class="ti-settings"></i>
+                    </div>
+                    <div class="item-inner">
+                        <span class="title">Gestion soutenances </span>
+                    </div>
+                </div>
+            </a>
+        </li>
+        <li >
+            <a href="{{ path('DocumentStudent') }}">
+                <div class="item-content">
+                    <div class="item-media">
+                        <i class="ti-settings"></i>
+                    </div>
+                    <div class="item-inner">
+                        <span class="title">Gestion Documents </span>
+                    </div>
+                </div>
+            </a>
+        </li>
+
+
+    </ul>
+
+{% endblock %}
+{% block pagetitle %}
+    <section id="page-title" class="padding-top-15 padding-bottom-15">
+        <div class="row">
+            <div class="col-sm-7">
+                <h1 class="mainTitle">GestionStages</h1>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{% block body -%}
+    <h1>Stage</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Idstage</th>
+                <td>{{ entity.idStage }}</td>
+            </tr>
+            <tr>
+                <th>Sujetstage</th>
+                <td>{{ entity.sujetStage }}</td>
+            </tr>
+            <tr>
+                <th>Datedebut</th>
+                <td>{{ entity.dateDebut|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Datefin</th>
+                <td>{{ entity.dateFin|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Affect</th>
+                <td>{{ entity.affect }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('StageStudent') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}

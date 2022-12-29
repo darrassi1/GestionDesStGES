@@ -1,0 +1,90 @@
+Administration:
+    type: entity
+    table: administration
+    indexes:
+        idUser:
+            columns:
+                - idUser
+    id:
+        idadmin:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: idAdmin
+            generator:
+                strategy: IDENTITY
+    fields:
+        firstname:
+            type: string
+            nullable: false
+            length: 120
+            options:
+                fixed: false
+            column: FirstName
+        lastname:
+            type: string
+            nullable: false
+            length: 120
+            options:
+                fixed: false
+            column: LastName
+        birth:
+            type: date
+            nullable: false
+            column: Birth
+        emailaddress:
+            type: string
+            nullable: false
+            length: 120
+            options:
+                fixed: false
+            column: EmailAddress
+        phone:
+            type: string
+            nullable: false
+            length: 11
+            options:
+                fixed: false
+            column: Phone
+        gender:
+            type: string
+            nullable: false
+            length: 11
+            options:
+                fixed: false
+            column: Gender
+        zipcode:
+            type: string
+            nullable: false
+            length: 11
+            options:
+                fixed: false
+            column: ZipCode
+        city:
+            type: string
+            nullable: false
+            length: 120
+            options:
+                fixed: false
+            column: City
+        imgSrc:
+            type: string
+            nullable: false
+            length: 120
+            options:
+                fixed: false
+            column: img_src
+    manyToOne:
+        iduser:
+            targetEntity: TutoUser
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idUser:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

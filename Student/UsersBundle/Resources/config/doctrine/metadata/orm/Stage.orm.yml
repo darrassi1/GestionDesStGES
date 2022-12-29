@@ -1,0 +1,76 @@
+Stage:
+    type: entity
+    table: stage
+    indexes:
+        Id_technologie:
+            columns:
+                - Id_technologie
+        Id_TypeStage:
+            columns:
+                - Id_TypeStage
+        Id_Departement:
+            columns:
+                - Id_Departement
+    id:
+        idStage:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: Id_Stage
+            generator:
+                strategy: IDENTITY
+    fields:
+        sujetStage:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+            column: Sujet_Stage
+        dateDebut:
+            type: date
+            nullable: false
+            column: Date_Debut
+        dateFin:
+            type: date
+            nullable: false
+            column: Date_Fin
+        affect:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+    manyToOne:
+        idTechnologie:
+            targetEntity: Technologie
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                Id_technologie:
+                    referencedColumnName: Id_Technologie
+            orphanRemoval: false
+        idDepartement:
+            targetEntity: Departement
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                Id_Departement:
+                    referencedColumnName: Id_Departement
+            orphanRemoval: false
+        idTypestage:
+            targetEntity: TypeStage
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                Id_TypeStage:
+                    referencedColumnName: Id_TypeStage
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,78 @@
+Document:
+    type: entity
+    table: document
+    indexes:
+        NCINET:
+            columns:
+                - NCINET
+                - NCINED
+        NCINED:
+            columns:
+                - NCINED
+        Id_typeDocument:
+            columns:
+                - Id_typeDocument
+        IDX_D8698A76E6D371F6:
+            columns:
+                - NCINET
+    id:
+        idDocument:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: Id_Document
+            generator:
+                strategy: IDENTITY
+    fields:
+        nomDocument:
+            type: string
+            nullable: false
+            length: 120
+            options:
+                fixed: false
+            column: Nom_Document
+        cheminDocument:
+            type: string
+            nullable: false
+            length: 120
+            options:
+                fixed: false
+            column: Chemin_Document
+        dateDocument:
+            type: date
+            nullable: false
+            column: Date__Document
+    manyToOne:
+        idTypedocument:
+            targetEntity: TypeDocument
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                Id_typeDocument:
+                    referencedColumnName: Id_typeDocument
+            orphanRemoval: false
+        ncinet:
+            targetEntity: TutoUser
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                NCINET:
+                    referencedColumnName: id
+            orphanRemoval: false
+        ncined:
+            targetEntity: TutoUser
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                NCINED:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

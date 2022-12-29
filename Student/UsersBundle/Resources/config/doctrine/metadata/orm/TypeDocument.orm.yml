@@ -1,0 +1,22 @@
+TypeDocument:
+    type: entity
+    table: type_document
+    id:
+        idTypedocument:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: Id_typeDocument
+            generator:
+                strategy: IDENTITY
+    fields:
+        typedocument:
+            type: string
+            nullable: false
+            length: 120
+            options:
+                fixed: false
+            column: typeDocument
+    lifecycleCallbacks: {  }
