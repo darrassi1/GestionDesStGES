@@ -1,3 +1,0 @@
-DocumentStudent:
-    path:     /
-    defaults: { _controller: "StudentUsersBundle:Document:index" }
