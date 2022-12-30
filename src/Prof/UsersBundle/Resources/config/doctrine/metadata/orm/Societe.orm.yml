@@ -1,0 +1,56 @@
+Societe:
+    type: entity
+    table: societe
+    id:
+        idSociete:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: Id_Societe
+            generator:
+                strategy: IDENTITY
+    fields:
+        nomSociete:
+            type: string
+            nullable: false
+            length: 120
+            options:
+                fixed: false
+            column: Nom_Societe
+        descptionSociete:
+            type: string
+            nullable: false
+            length: 120
+            options:
+                fixed: false
+            column: Descption_Societe
+        localSociete:
+            type: string
+            nullable: false
+            length: 120
+            options:
+                fixed: false
+            column: Local_Societe
+        telSociete:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: Tel_Societe
+        mailSociete:
+            type: string
+            nullable: false
+            length: 120
+            options:
+                fixed: false
+            column: Mail_Societe
+        sitewebSociete:
+            type: string
+            nullable: false
+            length: 120
+            options:
+                fixed: false
+            column: SiteWeb_Societe
+    lifecycleCallbacks: {  }

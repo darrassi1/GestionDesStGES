@@ -1,0 +1,3 @@
+prof_users_homepage:
+    path:     /BackOffice_Prof
+    defaults: { _controller: ProfUsersBundle:Default:index }

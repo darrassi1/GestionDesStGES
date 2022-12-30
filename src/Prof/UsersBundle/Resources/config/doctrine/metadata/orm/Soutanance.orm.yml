@@ -1,0 +1,54 @@
+Soutanance:
+    type: entity
+    table: soutanance
+    indexes:
+        Id_TypeSoutenance:
+            columns:
+                - Id_TypeSoutenance
+        Id_Stage:
+            columns:
+                - Id_Stage
+    id:
+        idSoutenance:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: Id_Soutenance
+            generator:
+                strategy: IDENTITY
+    fields:
+        dateSoutenance:
+            type: datetime
+            nullable: false
+            column: Date_Soutenance
+        salleSoutenance:
+            type: string
+            nullable: false
+            length: 10
+            options:
+                fixed: false
+            column: Salle_Soutenance
+    manyToOne:
+        idStage:
+            targetEntity: Stage
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                Id_Stage:
+                    referencedColumnName: Id_Stage
+            orphanRemoval: false
+        idTypesoutenance:
+            targetEntity: TypeSoutanance
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                Id_TypeSoutenance:
+                    referencedColumnName: Id_TypeSoutenance
+            orphanRemoval: false
+    lifecycleCallbacks: {  }
