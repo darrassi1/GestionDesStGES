@@ -1,0 +1,22 @@
+Departement:
+    type: entity
+    table: departement
+    id:
+        idDepartement:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: Id_Departement
+            generator:
+                strategy: IDENTITY
+    fields:
+        departement:
+            type: string
+            nullable: false
+            length: 120
+            options:
+                fixed: false
+            column: Departement
+    lifecycleCallbacks: {  }

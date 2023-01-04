@@ -1,0 +1,33 @@
+<?php
+
+namespace Student\UsersBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Departement
+ *
+ * @ORM\Table(name="departement")
+ * @ORM\Entity
+ */
+class Departement
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="Id_Departement", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idDepartement;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Departement", type="string", length=120, nullable=false)
+     */
+    private $departement;
+
+
+}
+

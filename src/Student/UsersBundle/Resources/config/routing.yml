@@ -1,0 +1,35 @@
+student_users_Document:
+    resource: "@StudentUsersBundle/Resources/config/routing/document.yml"
+    prefix:   /Document
+
+student_users_Soutanance:
+    resource: "@StudentUsersBundle/Resources/config/routing/soutanance.yml"
+    prefix:   /Soutanance
+
+student_users_Stage:
+    resource: "@StudentUsersBundle/Resources/config/routing/stage.yml"
+    prefix:   /Stage
+
+student_users_homepage:
+    path:     /
+    defaults: { _controller: StudentUsersBundle:Default:index }
+
+student_users_Profile:
+    path:     /Profile
+    defaults: { _controller: StudentUsersBundle:Default:Profile }
+
+student_users_Messages:
+    path:     /messages
+    defaults: { _controller: StudentUsersBundle:Default:messages }
+
+student_users_Agenda:
+    path:     /agenda
+    defaults: { _controller: StudentUsersBundle:Default:agenda }
+
+student_users_GestionStages:
+    path:     /gestionstages
+    defaults: { _controller: StudentUsersBundle:Default:gestionstages }
+
+student_users_Gestionsoutenances:
+    path:     /gestionsoutenances
+    defaults: { _controller: StudentUsersBundle:Default:gestionsoutenances }

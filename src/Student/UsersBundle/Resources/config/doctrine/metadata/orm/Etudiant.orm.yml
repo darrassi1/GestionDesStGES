@@ -1,0 +1,95 @@
+Etudiant:
+    type: entity
+    table: etudiant
+    indexes:
+        Id_Departement:
+            columns:
+                - Id_Departement
+        Id_Specialite:
+            columns:
+                - Id_Specialite
+    id:
+        ncin:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: NCIN
+            generator:
+                strategy: IDENTITY
+    fields:
+        nomEtudiant:
+            type: string
+            nullable: false
+            length: 120
+            options:
+                fixed: false
+            column: Nom_Etudiant
+        prenomEtudiant:
+            type: string
+            nullable: false
+            length: 120
+            options:
+                fixed: false
+            column: Prenom_Etudiant
+        sexeEtudiant:
+            type: string
+            nullable: false
+            length: 120
+            options:
+                fixed: false
+            column: Sexe_Etudiant
+        telEtudiant:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: Tel_Etudiant
+        dateNaissance:
+            type: date
+            nullable: false
+            column: Date_Naissance
+        nationaliteEtudiant:
+            type: string
+            nullable: false
+            length: 120
+            options:
+                fixed: false
+            column: Nationalite_Etudiant
+        niveauEtudiant:
+            type: string
+            nullable: false
+            length: 120
+            options:
+                fixed: false
+            column: Niveau_Etudiant
+        adresseEtudiant:
+            type: string
+            nullable: false
+            length: 120
+            options:
+                fixed: false
+            column: Adresse_Etudiant
+    manyToOne:
+        idDepartement:
+            targetEntity: Departement
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                Id_Departement:
+                    referencedColumnName: Id_Departement
+            orphanRemoval: false
+        idSpecialite:
+            targetEntity: Specialite
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                Id_Specialite:
+                    referencedColumnName: Id_Specialite
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

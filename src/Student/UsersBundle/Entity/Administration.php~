@@ -1,0 +1,99 @@
+<?php
+
+namespace Student\UsersBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Administration
+ *
+ * @ORM\Table(name="administration", indexes={@ORM\Index(name="idUser", columns={"idUser"})})
+ * @ORM\Entity
+ */
+class Administration
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idAdmin", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idadmin;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="FirstName", type="string", length=120, nullable=false)
+     */
+    private $firstname;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="LastName", type="string", length=120, nullable=false)
+     */
+    private $lastname;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="Birth", type="date", nullable=false)
+     */
+    private $birth;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="EmailAddress", type="string", length=120, nullable=false)
+     */
+    private $emailaddress;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Phone", type="string", length=11, nullable=false)
+     */
+    private $phone;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Gender", type="string", length=11, nullable=false)
+     */
+    private $gender;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ZipCode", type="string", length=11, nullable=false)
+     */
+    private $zipcode;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="City", type="string", length=120, nullable=false)
+     */
+    private $city;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="img_src", type="string", length=120, nullable=false)
+     */
+    private $imgSrc;
+
+    /**
+     * @var \TutoUser
+     *
+     * @ORM\ManyToOne(targetEntity="TutoUser")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idUser", referencedColumnName="id")
+     * })
+     */
+    private $iduser;
+
+
+}
+

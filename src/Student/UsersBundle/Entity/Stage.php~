@@ -1,0 +1,84 @@
+<?php
+
+namespace Student\UsersBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Stage
+ *
+ * @ORM\Table(name="stage", indexes={@ORM\Index(name="Id_technologie", columns={"Id_technologie"}), @ORM\Index(name="Id_TypeStage", columns={"Id_TypeStage"}), @ORM\Index(name="Id_Departement", columns={"Id_Departement"})})
+ * @ORM\Entity
+ */
+class Stage
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="Id_Stage", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idStage;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Sujet_Stage", type="text", length=65535, nullable=false)
+     */
+    private $sujetStage;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="Date_Debut", type="date", nullable=false)
+     */
+    private $dateDebut;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="Date_Fin", type="date", nullable=false)
+     */
+    private $dateFin;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="affect", type="integer", nullable=false)
+     */
+    private $affect;
+
+    /**
+     * @var \Technologie
+     *
+     * @ORM\ManyToOne(targetEntity="Technologie")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Id_technologie", referencedColumnName="Id_Technologie")
+     * })
+     */
+    private $idTechnologie;
+
+    /**
+     * @var \Departement
+     *
+     * @ORM\ManyToOne(targetEntity="Departement")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Id_Departement", referencedColumnName="Id_Departement")
+     * })
+     */
+    private $idDepartement;
+
+    /**
+     * @var \TypeStage
+     *
+     * @ORM\ManyToOne(targetEntity="TypeStage")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Id_TypeStage", referencedColumnName="Id_TypeStage")
+     * })
+     */
+    private $idTypestage;
+
+
+}
+

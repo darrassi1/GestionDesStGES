@@ -1,0 +1,30 @@
+StageStudent:
+    path:     /
+    defaults: { _controller: "StudentUsersBundle:Stage:index" }
+
+Stage_showStudent:
+    path:     /{id}/show
+    defaults: { _controller: "StudentUsersBundle:Stage:show" }
+
+Stage_newStudent:
+    path:     /new
+    defaults: { _controller: "StudentUsersBundle:Stage:new" }
+
+Stage_createStudent:
+    path:     /create
+    defaults: { _controller: "StudentUsersBundle:Stage:create" }
+    methods:  POST
+
+Stage_ediStudentt:
+    path:     /{id}/edit
+    defaults: { _controller: "StudentUsersBundle:Stage:edit" }
+
+Stage_updateStudent:
+    path:     /{id}/update
+    defaults: { _controller: "StudentUsersBundle:Stage:update" }
+    methods:  [POST, PUT]
+
+Stage_deleteStudent:
+    path:     /{id}/delete
+    defaults: { _controller: "StudentUsersBundle:Stage:delete" }
+    methods:  [POST, DELETE]

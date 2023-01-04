@@ -1,0 +1,8 @@
+SoutananceStudent:
+    path:     /
+    defaults: { _controller: "StudentUsersBundle:Soutanance:index" }
+
+Soutanance_showStudent:
+    path:     /{id}/show
+    defaults: { _controller: "StudentUsersBundle:Soutanance:show" }
+

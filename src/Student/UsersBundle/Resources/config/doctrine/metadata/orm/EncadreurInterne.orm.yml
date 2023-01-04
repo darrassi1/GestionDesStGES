@@ -1,0 +1,42 @@
+EncadreurInterne:
+    type: entity
+    table: encadreur_interne
+    indexes:
+        Id_Departement:
+            columns:
+                - Id_Departement
+        NCIN:
+            columns:
+                - NCIN
+    id:
+        idEncadreuri:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: Id_encadreurI
+            generator:
+                strategy: IDENTITY
+    manyToOne:
+        idDepartement:
+            targetEntity: Departement
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                Id_Departement:
+                    referencedColumnName: Id_Departement
+            orphanRemoval: false
+        ncin:
+            targetEntity: Encadreur
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                NCIN:
+                    referencedColumnName: NCIN
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

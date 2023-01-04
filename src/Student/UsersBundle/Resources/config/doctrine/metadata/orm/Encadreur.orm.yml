@@ -1,0 +1,47 @@
+Encadreur:
+    type: entity
+    table: encadreur
+    id:
+        ncin:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: NCIN
+            generator:
+                strategy: IDENTITY
+    fields:
+        nomEncadreur:
+            type: string
+            nullable: false
+            length: 120
+            options:
+                fixed: false
+            column: Nom_Encadreur
+        prenomEncadreur:
+            type: string
+            nullable: false
+            length: 120
+            options:
+                fixed: false
+            column: Prenom_Encadreur
+        sexeEncadreur:
+            type: string
+            nullable: false
+            length: 120
+            options:
+                fixed: false
+            column: Sexe_Encadreur
+        dateNaissance:
+            type: date
+            nullable: false
+            column: Date_Naissance
+        adresseEncadreur:
+            type: string
+            nullable: false
+            length: 120
+            options:
+                fixed: false
+            column: Adresse_Encadreur
+    lifecycleCallbacks: {  }

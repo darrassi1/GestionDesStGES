@@ -1,0 +1,50 @@
+StageJury:
+    type: entity
+    table: stage_jury
+    indexes:
+        Id_Soutenance:
+            columns:
+                - Id_Soutenance
+        NCIN:
+            columns:
+                - NCIN
+    id:
+        idStagejury:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: id_StageJury
+            generator:
+                strategy: IDENTITY
+    fields:
+        roleMembre:
+            type: string
+            nullable: false
+            length: 120
+            options:
+                fixed: false
+            column: Role_Membre
+    manyToOne:
+        idSoutenance:
+            targetEntity: Soutanance
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                Id_Soutenance:
+                    referencedColumnName: Id_Soutenance
+            orphanRemoval: false
+        ncin:
+            targetEntity: Encadreur
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                NCIN:
+                    referencedColumnName: NCIN
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

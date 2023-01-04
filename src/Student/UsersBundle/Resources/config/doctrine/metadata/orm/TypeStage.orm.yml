@@ -1,0 +1,22 @@
+TypeStage:
+    type: entity
+    table: type_stage
+    id:
+        idTypestage:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: Id_TypeStage
+            generator:
+                strategy: IDENTITY
+    fields:
+        typeStage:
+            type: string
+            nullable: false
+            length: 120
+            options:
+                fixed: false
+            column: Type_Stage
+    lifecycleCallbacks: {  }

@@ -1,0 +1,22 @@
+Technologie:
+    type: entity
+    table: technologie
+    id:
+        idTechnologie:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: Id_Technologie
+            generator:
+                strategy: IDENTITY
+    fields:
+        typeTechnologie:
+            type: string
+            nullable: false
+            length: 120
+            options:
+                fixed: false
+            column: Type_Technologie
+    lifecycleCallbacks: {  }
