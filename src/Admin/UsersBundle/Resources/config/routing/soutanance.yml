@@ -1,0 +1,30 @@
+Soutenance:
+    path:     /
+    defaults: { _controller: "AdminUsersBundle:Soutanance:index" }
+
+Soutenance_show:
+    path:     /{id}/show
+    defaults: { _controller: "AdminUsersBundle:Soutanance:show" }
+
+Soutenance_new:
+    path:     /new
+    defaults: { _controller: "AdminUsersBundle:Soutanance:new" }
+
+Soutenance_create:
+    path:     /create
+    defaults: { _controller: "AdminUsersBundle:Soutanance:create" }
+    methods:  POST
+
+Soutenance_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AdminUsersBundle:Soutanance:edit" }
+
+Soutenance_update:
+    path:     /{id}/update
+    defaults: { _controller: "AdminUsersBundle:Soutanance:update" }
+    methods:  [POST, PUT]
+
+Soutenance_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AdminUsersBundle:Soutanance:delete" }
+    methods:  [POST, DELETE]

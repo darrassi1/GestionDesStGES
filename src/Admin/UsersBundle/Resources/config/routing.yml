@@ -1,0 +1,70 @@
+admin_users_GestionUsersEn:
+    resource: "@AdminUsersBundle/Resources/config/routing/encadreur.yml"
+    prefix:   /GestionUsersEn
+
+admin_users_Specialite:
+    resource: "@AdminUsersBundle/Resources/config/routing/specialite.yml"
+    prefix:   /Specialite
+
+admin_users_Departement:
+    resource: "@AdminUsersBundle/Resources/config/routing/departement.yml"
+    prefix:   /Departement
+
+admin_users_Document:
+    resource: "@AdminUsersBundle/Resources/config/routing/document.yml"
+    prefix:   /Document
+
+admin_users_Soutenance:
+    resource: "@AdminUsersBundle/Resources/config/routing/soutanance.yml"
+    prefix:   /Soutenance
+
+admin_users_Stage:
+    resource: "@AdminUsersBundle/Resources/config/routing/stage.yml"
+    prefix:   /Stage
+
+admin_users_Administration:
+    resource: "@AdminUsersBundle/Resources/config/routing/administration.yml"
+    prefix:   /GestionUsersAdmin
+
+admin_users_homepage:
+    path:     /
+    defaults: { _controller: AdminUsersBundle:Default:index }
+
+admin_users_Profile:
+    path:     /Profile
+    defaults: { _controller: AdminUsersBundle:Default:Profile }
+
+admin_users_Profile_edit:
+    path:     /edit/{id}/{firstname}/{lastname}/{birth}/{emailaddress}/{phone}/{gender}/{zipcode}/{city}/{password}
+    defaults: { _controller: AdminUsersBundle:Default:edit }
+    methods:  [POST, PUT]
+    options:
+        expose: true
+
+admin_users_Messages:
+    path:     /Messages
+    defaults: { _controller: AdminUsersBundle:Default:Messages }
+
+admin_users_Agenda:
+    path:     /Agenda
+    defaults: { _controller: AdminUsersBundle:Default:Agenda }
+
+admin_users_GestionUsers:
+    path:     /GestionUsers
+    defaults: { _controller: AdminUsersBundle:Default:GestionUsers }
+
+admin_users_GestionStages:
+    path:     /GestionStages
+    defaults: { _controller: AdminUsersBundle:Default:GestionStages }
+
+admin_users_GestionRessources:
+    path:     /GestionRessources
+    defaults: { _controller: AdminUsersBundle:Default:GestionRessources }
+
+admin_users_GestionDocs:
+    path:     /GestionDocs
+    defaults: { _controller: AdminUsersBundle:Default:GestionDocs }
+
+admin_users_Gestionsoutenances:
+    path:     /Gestionsoutenances
+    defaults: { _controller: AdminUsersBundle:Default:Gestionsoutenances }

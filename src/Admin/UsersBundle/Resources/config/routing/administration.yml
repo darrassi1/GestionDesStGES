@@ -1,0 +1,39 @@
+Administration:
+    path:     /
+    defaults: { _controller: "AdminUsersBundle:Administration:index" }
+
+Administration_show:
+    path:     /{id}/show
+    defaults: { _controller: "AdminUsersBundle:Administration:show" }
+
+Administration_new:
+    path:     /new
+    defaults: { _controller: "AdminUsersBundle:Administration:new" }
+    options:
+      expose: true
+
+Administration_create:
+    path:     /create
+    defaults: { _controller: "AdminUsersBundle:Administration:create" }
+    methods:  POST
+
+Administration_createAdminProf:
+    path:     /createAdminProf
+    defaults: { _controller: "AdminUsersBundle:Administration:createAdminProf" }
+    methods:  POST
+
+Administration_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AdminUsersBundle:Administration:edit" }
+
+Administration_update:
+    path:     /{id}/update
+    defaults: { _controller: "AdminUsersBundle:Administration:update" }
+    methods:  [POST, PUT]
+    options:
+        expose: true
+
+Administration_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AdminUsersBundle:Administration:delete" }
+    methods:  [POST, DELETE]

@@ -1,0 +1,46 @@
+<?php
+
+namespace Admin\UsersBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * EncadreurInterne
+ *
+ * @ORM\Table(name="encadreur interne", indexes={@ORM\Index(name="Id_Departement", columns={"Id_Departement"}), @ORM\Index(name="NCIN", columns={"NCIN"})})
+ * @ORM\Entity
+ */
+class EncadreurInterne
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="Id_encadreurI", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idEncadreuri;
+
+    /**
+     * @var \Encadreur
+     *
+     * @ORM\ManyToOne(targetEntity="Encadreur")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="NCIN", referencedColumnName="NCIN")
+     * })
+     */
+    private $ncin;
+
+    /**
+     * @var \Departement
+     *
+     * @ORM\ManyToOne(targetEntity="Departement")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Id_Departement", referencedColumnName="Id_Departement")
+     * })
+     */
+    private $idDepartement;
+
+
+}
+

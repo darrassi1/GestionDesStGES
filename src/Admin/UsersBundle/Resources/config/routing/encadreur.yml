@@ -1,0 +1,35 @@
+GestionUsersEn:
+    path:     /
+    defaults: { _controller: "AdminUsersBundle:Encadreur:index" }
+
+GestionUsersEn_show:
+    path:     /{id}/show
+    defaults: { _controller: "AdminUsersBundle:Encadreur:show" }
+
+Administration_createAdminenc:
+    path:     /createAdminenc
+    defaults: { _controller: "AdminUsersBundle:Encadreur:createAdminenc" }
+    methods:  POST
+
+GestionUsersEn_new:
+    path:     /new
+    defaults: { _controller: "AdminUsersBundle:Encadreur:new" }
+
+GestionUsersEn_create:
+    path:     /create
+    defaults: { _controller: "AdminUsersBundle:Encadreur:create" }
+    methods:  POST
+
+GestionUsersEn_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AdminUsersBundle:Encadreur:edit" }
+
+GestionUsersEn_update:
+    path:     /{id}/update
+    defaults: { _controller: "AdminUsersBundle:Encadreur:update" }
+    methods:  [POST, PUT]
+
+GestionUsersEn_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AdminUsersBundle:Encadreur:delete" }
+    methods:  [POST, DELETE]

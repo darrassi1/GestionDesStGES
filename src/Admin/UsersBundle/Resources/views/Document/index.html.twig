@@ -1,0 +1,45 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Document list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Iddocument</th>
+                <th>Nomdocument</th>
+                <th>Chemindocument</th>
+                <th>Datedocument</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('Document_show', { 'id': entity.idDocument }) }}">{{ entity.idDocument }}</a></td>
+                <td>{{ entity.nomDocument }}</td>
+                <td>{{ entity.cheminDocument }}</td>
+                <td>{% if entity.dateDocument %}{{ entity.dateDocument|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('Document_show', { 'id': entity.idDocument }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('Document_edit', { 'id': entity.idDocument }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('Document_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

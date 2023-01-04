@@ -1,0 +1,49 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Encadreur list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Ncin</th>
+                <th>Nomencadreur</th>
+                <th>Prenomencadreur</th>
+                <th>Sexeencadreur</th>
+                <th>Datenaissance</th>
+                <th>Adresseencadreur</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('GestionUsersEn_show', { 'id': entity.ncin }) }}">{{ entity.ncin }}</a></td>
+                <td>{{ entity.nomEncadreur }}</td>
+                <td>{{ entity.prenomEncadreur }}</td>
+                <td>{{ entity.sexeEncadreur }}</td>
+                <td>{% if entity.dateNaissance %}{{ entity.dateNaissance|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.adresseEncadreur }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('GestionUsersEn_show', { 'id': entity.ncin }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('GestionUsersEn_edit', { 'id': entity.ncin }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('GestionUsersEn_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

@@ -1,0 +1,34 @@
+<?php
+
+namespace Admin\UsersBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * TypeDocument
+ *
+ * @ORM\Table(name="type_document")
+ * @ORM\Entity
+ */
+class TypeDocument
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="Id_typeDocument", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idTypedocument;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="typeDocument", type="string", length=120, nullable=false)
+     */
+    private $typedocument;
+
+
+    
+}
+

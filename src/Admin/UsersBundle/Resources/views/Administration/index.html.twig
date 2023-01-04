@@ -1,0 +1,57 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Administration list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Idadmin</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Birth</th>
+                <th>Emailaddress</th>
+                <th>Phone</th>
+                <th>Gender</th>
+                <th>Zipcode</th>
+                <th>City</th>
+                <th>Imgsrc</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('Administration_show', { 'id': entity.idadmin }) }}">{{ entity.idadmin }}</a></td>
+                <td>{{ entity.firstname }}</td>
+                <td>{{ entity.lastname }}</td>
+                <td>{% if entity.birth %}{{ entity.birth|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.emailaddress }}</td>
+                <td>{{ entity.phone }}</td>
+                <td>{{ entity.gender }}</td>
+                <td>{{ entity.zipcode }}</td>
+                <td>{{ entity.city }}</td>
+                <td>{{ entity.imgSrc }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('Administration_show', { 'id': entity.idadmin }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('Administration_edit', { 'id': entity.idadmin }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('Administration_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

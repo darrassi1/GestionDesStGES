@@ -1,0 +1,41 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Departement list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Iddepartement</th>
+                <th>Departement</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('Departement_show', { 'id': entity.idDepartement }) }}">{{ entity.idDepartement }}</a></td>
+                <td>{{ entity.departement }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('Departement_show', { 'id': entity.idDepartement }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('Departement_edit', { 'id': entity.idDepartement }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('Departement_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

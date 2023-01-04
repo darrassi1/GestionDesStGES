@@ -1,0 +1,45 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Stage list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Sujetstage</th>
+                <th>Datedebut</th>
+                <th>Datefin</th>
+                <th>Affect</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td>{{ entity.sujetStage }}</td>
+                <td>{% if entity.dateDebut %}{{ entity.dateDebut|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.dateFin %}{{ entity.dateFin|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.affect }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('Stage_show', { 'id': entity.idStage }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('Stage_edit', { 'id': entity.idStage }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('Stage_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

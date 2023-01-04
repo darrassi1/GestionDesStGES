@@ -1,0 +1,188 @@
+{% extends 'AdminUsersBundle::layout.html.twig' %}
+
+{% block title %}   Gestion soutenances    {% endblock %}
+{% block css %}
+    <link href="{{ asset('Backoffice/vendor/select2/select2.min.css') }}" rel="stylesheet" media="screen">
+    <link href="{{ asset('Backoffice/vendor/DataTables/css/DT_bootstrap.css') }}" rel="stylesheet" media="screen">
+{% endblock %}
+
+ {% block Menu %}
+     <ul class="main-navigation-menu">
+         <li>
+             <a href="index.html">
+                 <div class="item-content">
+                     <div class="item-media">
+                         <i class="ti-home"></i>
+                     </div>
+                     <div class="item-inner">
+                         <span class="title"> Dashboard </span>
+                     </div>
+                 </div>
+             </a>
+         </li>
+         <li>
+             <a href="{{ path('admin_users_Profile') }}">
+                 <div class="item-content">
+                     <div class="item-media">
+                         <i class="ti-settings"></i>
+                     </div>
+                     <div class="item-inner">
+                         <span class="title"> Profile </span>
+                     </div>
+                 </div>
+             </a>
+         </li>
+         <li>
+             <a href="{{ path('admin_users_Messages') }}">
+                 <div class="item-content">
+                     <div class="item-media">
+                         <i class="ti-settings"></i>
+                     </div>
+                     <div class="item-inner">
+                         <span class="title"> Messages </span>
+                     </div>
+                 </div>
+             </a>
+         </li>
+         <li >
+             <a href="{{ path('admin_users_Agenda') }}">
+                 <div class="item-content">
+                     <div class="item-media">
+                         <i class="ti-settings"></i>
+                     </div>
+                     <div class="item-inner">
+                         <span class="title"> Agenda </span>
+                     </div>
+                 </div>
+             </a>
+         </li>
+         <li >
+             <a href="{{ path('admin_users_GestionStages') }}">
+                 <div class="item-content">
+                     <div class="item-media">
+                         <i class="ti-settings"></i>
+                     </div>
+                     <div class="item-inner">
+                         <span class="title">Gestion Stages </span>
+                     </div>
+                 </div>
+             </a>
+         </li>
+         <li   class="active open">
+             <a href="{{ path('admin_users_Gestionsoutenances') }}">
+                 <div class="item-content">
+                     <div class="item-media">
+                         <i class="ti-settings"></i>
+                     </div>
+                     <div class="item-inner">
+                         <span class="title">Gestion soutenances </span>
+                     </div>
+                 </div>
+             </a>
+         </li>
+         <li>
+             <a href="{{ path('admin_users_GestionUsers') }}">
+                 <div class="item-content">
+                     <div class="item-media">
+                         <i class="ti-settings"></i>
+                     </div>
+                     <div class="item-inner">
+                         <span class="title"> Gestions Users </span>
+                     </div>
+                 </div>
+             </a>
+         </li>
+         <li>
+             <a href="{{ path('admin_users_GestionDocs') }}">
+                 <div class="item-content">
+                     <div class="item-media">
+                         <i class="ti-settings"></i>
+                     </div>
+                     <div class="item-inner">
+                         <span class="title"> Gestion Documents </span>
+                     </div>
+                 </div>
+             </a>
+         </li>
+         <li>
+             <a href="{{ path('admin_users_GestionRessources') }}">
+                 <div class="item-content">
+                     <div class="item-media">
+                         <i class="ti-settings"></i>
+                     </div>
+                     <div class="item-inner">
+                         <span class="title">Gestion Ressources </span>
+                     </div>
+                 </div>
+             </a>
+         </li>
+     </ul>
+
+ {% endblock %}
+{% block pagetitle %}
+    <section id="page-title" class="padding-top-15 padding-bottom-15">
+        <div class="row">
+            <div class="col-sm-7">
+                <h1 class="mainTitle">Gestion Ressources</h1>
+                <span class="mainDescription">overview &amp; stats </span>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block body %}
+    <div class="container-fluid container-fullw bg-white">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-sm-12 space20">
+                    <a href="{{ path('Soutenance_new') }}" class="btn btn-primary btn-o add-event"><i class="fa fa-plus"></i> Add New Soutenance</a>
+                </div>
+
+                <div id="sample_1_wrapper" class="dataTables_wrapper no-footer">
+                    <div id="sample_1_filter" class="dataTables_filter"></div>
+                    <table class="table table-striped table-bordered table-hover table-full-width dataTable no-footer" id="sample_1" role="grid" aria-describedby="sample_1_info">
+                        <thead>
+                        <tr role="row">
+                            <th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Id_Stage" style="width: 211px;">Id_Soutenance</th>
+                            <th class="hidden-xs sorting_asc" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="dateDebut" style="width: 247px;">Date_Soutenance</th>
+                            <th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="dateFin" style="width: 109px;">Salle_Soutenance</th>
+                            <th class="hidden-xs sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label=" affect" style="width: 182px;">Id_TypeSoutenance</th>
+                            <th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label="Current	layout engine: activate to sort column ascending" style="width: 134px;">Edit</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for entity in entities %}
+                            <tr role="row" class="even">
+                                <td>{{ entity.idSoutenance }}</td>
+                                <td class="hidden-xs sorting_1">{% if entity.dateSoutenance %}{{ entity.dateSoutenance|date('Y-m-d H:i:s') }}{% endif %}</td>
+                                <td>{{ entity.salleSoutenance }}</td>
+                                <td class="hidden-xs">{{ entity.idTypesoutenance }}</td>
+                                <td>
+                                    <ul>
+                                        <li>
+                                            <a href="{{ path('Soutenance_edit', { 'id': entity.idSoutenance }) }}">edit</a>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% endblock %}
+
+
+{% block javascript %}
+    <script src="{{ asset('Backoffice/vendor/select2/select2.min.js') }}"></script>
+    <script src="{{ asset('Backoffice/vendor/DataTables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('Backoffice/assets/js/table-data.js') }}"></script>
+    <script>
+        jQuery(document).ready(function() {
+            TableData.init();
+        });
+    </script>
+{% endblock %}

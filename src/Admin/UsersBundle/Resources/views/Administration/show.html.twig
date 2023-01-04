@@ -1,0 +1,64 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Administration</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Idadmin</th>
+                <td>{{ entity.idadmin }}</td>
+            </tr>
+            <tr>
+                <th>Firstname</th>
+                <td>{{ entity.firstname }}</td>
+            </tr>
+            <tr>
+                <th>Lastname</th>
+                <td>{{ entity.lastname }}</td>
+            </tr>
+            <tr>
+                <th>Birth</th>
+                <td>{{ entity.birth|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Emailaddress</th>
+                <td>{{ entity.emailaddress }}</td>
+            </tr>
+            <tr>
+                <th>Phone</th>
+                <td>{{ entity.phone }}</td>
+            </tr>
+            <tr>
+                <th>Gender</th>
+                <td>{{ entity.gender }}</td>
+            </tr>
+            <tr>
+                <th>Zipcode</th>
+                <td>{{ entity.zipcode }}</td>
+            </tr>
+            <tr>
+                <th>City</th>
+                <td>{{ entity.city }}</td>
+            </tr>
+            <tr>
+                <th>Imgsrc</th>
+                <td>{{ entity.imgSrc }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('Administration') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('Administration_edit', { 'id': entity.idadmin }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

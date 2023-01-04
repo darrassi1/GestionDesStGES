@@ -1,0 +1,391 @@
+{% extends 'AdminUsersBundle::layout.html.twig' %}
+
+{% block title %}   Profile    {% endblock %}
+
+{% block css %}
+
+    <link href="{{ asset('Backoffice/vendor/sweetalert/sweet-alert.css') }}" rel="stylesheet" media="screen">
+    <link href="{{ asset('Backoffice/vendor/sweetalert/ie9.css') }}" rel="stylesheet" media="screen">
+    <link href="{{ asset('Backoffice/vendor/toastr/toastr.min.css') }}" rel="stylesheet" media="screen">
+    <link href="{{ asset('Backoffice/vendor/bootstrap-fileinput/jasny-bootstrap.min.css') }}" rel="stylesheet" media="screen">
+{% endblock %}
+ {% block Menu %}
+     <ul class="main-navigation-menu">
+         <li>
+             <a href="index.html">
+                 <div class="item-content">
+                     <div class="item-media">
+                         <i class="ti-home"></i>
+                     </div>
+                     <div class="item-inner">
+                         <span class="title"> Dashboard </span>
+                     </div>
+                 </div>
+             </a>
+         </li>
+         <li class="active open">
+             <a href="{{ path('admin_users_Profile') }}">
+                 <div class="item-content">
+                     <div class="item-media">
+                         <i class="ti-settings"></i>
+                     </div>
+                     <div class="item-inner">
+                         <span class="title"> Profile </span>
+                     </div>
+                 </div>
+             </a>
+         </li>
+         <li>
+             <a href="{{ path('admin_users_Messages') }}">
+                 <div class="item-content">
+                     <div class="item-media">
+                         <i class="ti-settings"></i>
+                     </div>
+                     <div class="item-inner">
+                         <span class="title"> Messages </span>
+                     </div>
+                 </div>
+             </a>
+         </li>
+         <li>
+             <a href="{{ path('admin_users_Agenda') }}">
+                 <div class="item-content">
+                     <div class="item-media">
+                         <i class="ti-settings"></i>
+                     </div>
+                     <div class="item-inner">
+                         <span class="title"> Agenda </span>
+                     </div>
+                 </div>
+             </a>
+         </li>
+         <li>
+             <a href="{{ path('admin_users_GestionStages') }}">
+                 <div class="item-content">
+                     <div class="item-media">
+                         <i class="ti-settings"></i>
+                     </div>
+                     <div class="item-inner">
+                         <span class="title">Gestion Stages </span>
+                     </div>
+                 </div>
+             </a>
+         </li>
+         <li>
+             <a href="{{ path('admin_users_Gestionsoutenances') }}">
+                 <div class="item-content">
+                     <div class="item-media">
+                         <i class="ti-settings"></i>
+                     </div>
+                     <div class="item-inner">
+                         <span class="title">Gestion soutenances </span>
+                     </div>
+                 </div>
+             </a>
+         </li>
+         <li>
+             <a href="{{ path('admin_users_GestionUsers') }}">
+                 <div class="item-content">
+                     <div class="item-media">
+                         <i class="ti-settings"></i>
+                     </div>
+                     <div class="item-inner">
+                         <span class="title"> Gestions Users </span>
+                     </div>
+                 </div>
+             </a>
+         </li>
+         <li>
+             <a href="{{ path('admin_users_GestionDocs') }}">
+                 <div class="item-content">
+                     <div class="item-media">
+                         <i class="ti-settings"></i>
+                     </div>
+                     <div class="item-inner">
+                         <span class="title"> Gestion Documents </span>
+                     </div>
+                 </div>
+             </a>
+         </li>
+         <li>
+             <a href="{{ path('admin_users_GestionRessources') }}">
+                 <div class="item-content">
+                     <div class="item-media">
+                         <i class="ti-settings"></i>
+                     </div>
+                     <div class="item-inner">
+                         <span class="title">Gestion Ressources </span>
+                     </div>
+                 </div>
+             </a>
+         </li>
+     </ul>
+
+ {% endblock %}
+{% block pagetitle %}
+    <section id="page-title" class="padding-top-15 padding-bottom-15">
+        <div class="row">
+            <div class="col-sm-7">
+                <h1 class="mainTitle">Profile</h1>
+                <span class="mainDescription">overview &amp; stats </span>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block body %}
+    <div class="container-fluid container-fullw bg-white">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="tabbable">
+                    <ul class="nav nav-tabs tab-padding tab-space-3 tab-blue" id="myTab4">
+                        <li class="active">
+                            <a data-toggle="tab" href="#panel_overview">
+                                Overview
+                            </a>
+                        </li>
+                        <li>
+                            <a data-toggle="tab" href="#panel_edit_account">
+                                Edit Account
+                            </a>
+                        </li>
+
+                    </ul>
+                    <div class="tab-content">
+                        <div id="panel_overview" class="tab-pane fade in active">
+                            <div class="row">
+                                <div class="col-sm-5 col-md-4">
+                                    <div class="user-left">
+                                        <div class="center">
+                                            <h4>{{ profile[0].firstname }} {{ profile[0].lastname}}</h4>
+                                            <div class="fileinput fileinput-new" data-provides="fileinput">
+                                                <div class="user-image">
+                                                    <div class="fileinput-new thumbnail"><img src="{{ asset(profile[0].imgSrc) }}" alt="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-7 col-md-8">
+                                    <div class="panel panel-white" id="activities">
+                                        <div class="panel-heading border-light">
+                                            <h4><span class="text-bold">General information</span></h4>
+                                            <paneltool class="panel-tools" tool-collapse="tool-collapse" tool-refresh="load1" tool-dismiss="tool-dismiss"></paneltool>
+                                        </div>
+                                        <div collapse="activities" ng-init="activities=false" class="panel-wrapper">
+                                            <div class="panel-body">
+                                                <table class="table">
+                                                    <tbody>
+                                                    <tr>
+                                                        <td><a href="#">Birth</a></td>
+                                                        <td>{{ profile[0].birth|date("d")}} - {{ profile[0].birth|date("F")}} - {{ profile[0].birth|date("Y")}}
+                                                        </td>
+                                                        <td><a href="#panel_edit_account" class="show-tab"><i class="fa fa-pencil edit-user-info"></i></a></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><a href="#">Email Address</a></td>
+                                                        <td>{{ profile[0].emailaddress}}</td>
+                                                        <td><a href="#panel_edit_account" class="show-tab"><i class="fa fa-pencil edit-user-info"></i></a></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><a href="#">Phone</a></td>
+                                                        <td>{{ profile[0].phone }}</td>
+                                                        <td><a href="#panel_edit_account" class="show-tab"><i class="fa fa-pencil edit-user-info"></i></a></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><a href="#">City</a></td>
+                                                        <td>{{ profile[0].city }}</td>
+                                                        <td><a href="#panel_edit_account" class="show-tab"><i class="fa fa-pencil edit-user-info"></i></a></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td> <a href="#">Zip Code</a></td>
+                                                        <td> {{ profile[0].zipcode }}     </td>
+                                                        <td><a href="#panel_edit_account" class="show-tab"><i class="fa fa-pencil edit-user-info"></i></a></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><a href="#">Status</a></td>
+                                                        <td><span class="label label-sm label-info">Administrator</span></td>
+                                                        <td></td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="panel_edit_account" class="tab-pane fade">
+                            <fieldset>
+                                    <legend>
+                                        Account Info
+                                    </legend>
+                                    <input type="hidden" id="id" value="{{ profile[0].idadmin}}">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    First Name
+                                                </label>
+                                                <input type="text" value="{{ profile[0].firstname }}" class="form-control" id="firstname" name="firstname">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    Last Name
+                                                </label>
+                                                <input type="text" value=" {{ profile[0].lastname}}" class="form-control" id="lastname" name="lastname">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    Email Address
+                                                </label>
+                                                <input type="email" value="{{ profile[0].emailaddress}}" class="form-control" id="email" name="email">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    Phone
+                                                </label>
+                                                <input type="text" value="{{ profile[0].phone }}" class="form-control" id="phone" name="phone">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    Password
+                                                </label>
+                                                <input type="password" placeholder="password" class="form-control" name="password" id="password">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    Confirm Password
+                                                </label>
+                                                <input type="password" placeholder="password" class="form-control" id="password_again" name="password_again">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    birth
+                                                </label>
+                                                <input type="date" value="{{profile[0].birth|date('Y-m-d')}}" class="form-control" id="birth" name="birth">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">
+                                                    Gender
+                                                </label>
+                                                <div class="clip-radio radio-primary">
+                                                    <input type="radio" value="female" name="gender" id="us-female" {% if profile[0].gender == 'female' %} checked=""  {% endif %}>
+                                                    <label for="us-female">
+                                                        Female
+                                                    </label>
+                                                    <input type="radio" value="male" name="gender" id="us-male" {% if profile[0].gender == 'male' %} checked=""  {% endif %}>
+                                                    <label for="us-male">
+                                                        Male
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label class="control-label">
+                                                            Zip Code
+                                                        </label>
+                                                        <input class="form-control" value="{{ profile[0].zipcode }}" type="text" name="zipcode" id="zipcode">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="form-group">
+                                                        <label class="control-label">
+                                                            City
+                                                        </label>
+                                                        <input class="form-control tooltips" value="{{ profile[0].city }}" type="text" data-original-title="We'll display it when you write reviews" data-rel="tooltip" title="" data-placement="top" name="city" id="city">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>
+                                                    Image Upload
+                                                </label>
+                                                <div class="fileinput fileinput-new" data-provides="fileinput">
+                                                    <div class="fileinput-new thumbnail"><img src="{{ asset(profile[0].imgSrc) }}" alt="">
+                                                    </div>
+                                                    <div class="fileinput-preview fileinput-exists thumbnail"></div>
+                                                    <div class="user-edit-image-buttons">
+																			<span class="btn btn-azure btn-file"><span class="fileinput-new"><i class="fa fa-picture"></i> Select image</span><span class="fileinput-exists"><i class="fa fa-picture"></i> Change</span>
+																				<input type="file">
+																			</span>
+                                                        <a href="#" class="btn fileinput-exists btn-red" data-dismiss="fileinput">
+                                                            <i class="fa fa-times"></i> Remove
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div>
+                                            Required Fields
+                                            <hr>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <p>
+                                            By clicking UPDATE, you are agreeing to the Policy and Terms &amp; Conditions.
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <button class="btn btn-primary pull-right" id="update" type="submit">
+                                            Update <i class="fa fa-arrow-circle-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block javascript %}
+    <script >
+        $('#update').click(function(){
+            var firstname= document.getElementById('firstname').value;
+            var lastname= document.getElementById('lastname').value;
+            var emailaddress= document.getElementById('email').value;
+            var password= document.getElementById('password').value;
+            var password_again= document.getElementById('password_again').value;
+            var gender = $("input[name='gender']:checked").val();
+            var zipcode= document.getElementById('zipcode').value;
+            var city= document.getElementById('city').value;
+            var phone= document.getElementById('phone').value;
+            var birth= document.getElementById('birth').value;
+            var id= document.getElementById('id').value;
+            $.ajax({
+                type: "POST",
+                url: Routing.generate('admin_users_Profile_edit', {id:id,firstname:firstname,lastname:lastname,birth:birth,emailaddress:emailaddress,phone:phone,gender:gender,zipcode:zipcode,city:city,password:password}),
+                beforeSend: function() {
+                    // setting a timeout
+                    swal("loading ...")
+                },
+                success: function(data){
+                    swal("Good job!", "Recherche page  pour voir changement!", "success");
+                    location.reload();
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    sweetAlert("Oops...", "Status:="+textStatus + " Error:="+errorThrown, "error");
+                }
+            })
+
+        });
+    </script>
+    <script src="{{asset('Backoffice/vendor/sweetalert/sweet-alert.min.js')}}"></script>
+    <script src="{{asset('Backoffice/vendor/toastr/toastr.min.js')}}"></script>
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
+    <script src="{{ asset('Backoffice/vendor/bootstrap-fileinput/jasny-bootstrap.js') }}"></script>
+{% endblock %}

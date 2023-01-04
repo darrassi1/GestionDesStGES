@@ -1,0 +1,30 @@
+Stage:
+    path:     /
+    defaults: { _controller: "AdminUsersBundle:Stage:index" }
+
+Stage_show:
+    path:     /{id}/show
+    defaults: { _controller: "AdminUsersBundle:Stage:show" }
+
+Stage_new:
+    path:     /new
+    defaults: { _controller: "AdminUsersBundle:Stage:new" }
+
+Stage_create:
+    path:     /create
+    defaults: { _controller: "AdminUsersBundle:Stage:create" }
+    methods:  POST
+
+Stage_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AdminUsersBundle:Stage:edit" }
+
+Stage_update:
+    path:     /{id}/update
+    defaults: { _controller: "AdminUsersBundle:Stage:update" }
+    methods:  [POST, PUT]
+
+Stage_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AdminUsersBundle:Stage:delete" }
+    methods:  [POST, DELETE]

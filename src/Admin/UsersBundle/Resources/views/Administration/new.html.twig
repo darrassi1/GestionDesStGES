@@ -1,0 +1,95 @@
+
+{% block body %}
+    <script>
+        $(document).ready(function() {
+            $('#ajaxForm').on('submit', function(e) {
+                e.preventDefault();
+                $.ajax({
+                    url:$(this).attr('action'),
+                    type:$(this).attr('method'),
+                    data: $(this).serialize(),
+                    beforeSend: function(){
+                        $('#orderModalcontent').html("waiting .............");
+                    }, success: function() {
+                        //$('#orderModal').hide();
+                        alert("succes");
+                    },
+                    complete: function(){
+                        alert("comple");
+                        $('#orderModal').hide();
+
+                    }
+                });
+
+            });
+
+        });
+
+    </script>
+          <div  id="tab2">
+                    <div class="form_error"></div>
+                    <form method="POST" id="ajaxForm" action="{{path('Administration_create')}}" {{ form_enctype(form) }}>
+                        <div id="form_body">
+                                <div class="col-sm-12">
+                                    <div class="col-md-12">{{ form_errors(form) }}</div>
+                                    <div class="bg-danger">{{ form_errors(form.firstname) }}</div>
+                                    <div class="form-group input-group">
+                                        {{ form_widget(form.firstname,  {'attr': {'placeholder':'firstname', 'title':'firstname', 'class':'form-control'}}) }}
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="bg-danger">{{ form_errors(form.lastname) }}</div>
+                                    <div class="form-group">
+                                        {{ form_widget(form.lastname,  {'attr': {'placeholder':'lastname','title':'lastname', 'class':'form-control'}}) }}
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="bg-danger">{{ form_errors(form.birth) }}</div>
+                                    <div class="form-group">
+                                        {{ form_widget(form.birth) }}
+                                    </div>
+                                </div>
+                                <div class=col-sm-12">
+                                    <div class="bg-danger">{{ form_errors(form.emailaddress) }}</div>
+                                    <div class="form-group">
+                                        {{ form_widget(form.emailaddress,  {'attr': {'placeholder':'emailaddress','title':'emailaddress', 'class':'form-control'}}) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="bg-danger">{{ form_errors(form.phone) }}</div>
+                                    <div class="form-group">
+                                        {{ form_widget(form.phone,  {'attr': {'placeholder':'phone','title':'phone', 'class':'form-control'}}) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="bg-danger">{{ form_errors(form.gender) }}</div>
+                                    <div class="form-group">
+                                        {{ form_widget(form.gender,  {'attr': {'placeholder':'gender','title':'gender', 'class':'form-control'}}) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="bg-danger">{{ form_errors(form.zipcode) }}</div>
+                                    <div class="form-group">
+                                        {{ form_widget(form.zipcode,  {'attr': {'placeholder':'zipcode','title':'zipcode', 'class':'form-control'}}) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="bg-danger">{{ form_errors(form.city) }}</div>
+                                    <div class="form-group">
+                                        {{ form_widget(form.city,  {'attr': {'placeholder':'city','title':'city', 'class':'form-control'}}) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="bg-danger">{{ form_errors(form.iduser) }}</div>
+                                    <div class="form-group">
+                                        {{ form_widget(form.iduser,  {'attr': {'title':'iduser', 'class':'form-control'}}) }}
+                                    </div>
+                                </div>
+                            </div>
+
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        {{form_rest(form)}}
+                    </form>
+            </div>
+
+{% endblock %}

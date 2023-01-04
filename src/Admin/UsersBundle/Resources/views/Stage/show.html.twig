@@ -1,0 +1,211 @@
+{% extends 'AdminUsersBundle::layout.html.twig' %}
+
+{% block title %}   GestionStages    {% endblock %}
+
+{% block css %}
+{% endblock %}
+ {% block Menu %}
+     <ul class="main-navigation-menu">
+         <li>
+             <a href="index.html">
+                 <div class="item-content">
+                     <div class="item-media">
+                         <i class="ti-home"></i>
+                     </div>
+                     <div class="item-inner">
+                         <span class="title"> Dashboard </span>
+                     </div>
+                 </div>
+             </a>
+         </li>
+         <li>
+             <a href="{{ path('admin_users_Profile') }}">
+                 <div class="item-content">
+                     <div class="item-media">
+                         <i class="ti-settings"></i>
+                     </div>
+                     <div class="item-inner">
+                         <span class="title"> Profile </span>
+                     </div>
+                 </div>
+             </a>
+         </li>
+         <li>
+             <a href="{{ path('admin_users_Messages') }}">
+                 <div class="item-content">
+                     <div class="item-media">
+                         <i class="ti-settings"></i>
+                     </div>
+                     <div class="item-inner">
+                         <span class="title"> Messages </span>
+                     </div>
+                 </div>
+             </a>
+         </li>
+         <li >
+             <a href="{{ path('admin_users_Agenda') }}">
+                 <div class="item-content">
+                     <div class="item-media">
+                         <i class="ti-settings"></i>
+                     </div>
+                     <div class="item-inner">
+                         <span class="title"> Agenda </span>
+                     </div>
+                 </div>
+             </a>
+         </li>
+         <li   class="active open">
+             <a href="{{ path('admin_users_GestionStages') }}">
+                 <div class="item-content">
+                     <div class="item-media">
+                         <i class="ti-settings"></i>
+                     </div>
+                     <div class="item-inner">
+                         <span class="title">Gestion Stages </span>
+                     </div>
+                 </div>
+             </a>
+         </li>
+         <li>
+             <a href="{{ path('admin_users_Gestionsoutenances') }}">
+                 <div class="item-content">
+                     <div class="item-media">
+                         <i class="ti-settings"></i>
+                     </div>
+                     <div class="item-inner">
+                         <span class="title">Gestion soutenances </span>
+                     </div>
+                 </div>
+             </a>
+         </li>
+         <li>
+             <a href="{{ path('admin_users_GestionUsers') }}">
+                 <div class="item-content">
+                     <div class="item-media">
+                         <i class="ti-settings"></i>
+                     </div>
+                     <div class="item-inner">
+                         <span class="title"> Gestions Users </span>
+                     </div>
+                 </div>
+             </a>
+         </li>
+         <li>
+             <a href="{{ path('admin_users_GestionDocs') }}">
+                 <div class="item-content">
+                     <div class="item-media">
+                         <i class="ti-settings"></i>
+                     </div>
+                     <div class="item-inner">
+                         <span class="title"> Gestion Documents </span>
+                     </div>
+                 </div>
+             </a>
+         </li>
+         <li>
+             <a href="{{ path('admin_users_GestionRessources') }}">
+                 <div class="item-content">
+                     <div class="item-media">
+                         <i class="ti-settings"></i>
+                     </div>
+                     <div class="item-inner">
+                         <span class="title">Gestion Ressources </span>
+                     </div>
+                 </div>
+             </a>
+         </li>
+     </ul>
+ {% endblock %}
+
+{% block pagetitle %}
+    <section id="page-title" class="padding-top-15 padding-bottom-15">
+        <div class="row">
+            <div class="col-sm-7">
+                <h1 class="mainTitle">GestionStages</h1>
+                <span class="mainDescription">overview &amp; stats </span>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block body %}
+    <h1>Stage  N`{{ entity.idStage }}</h1>
+    <div class="tabbable tabs-left">
+        <ul id="myTab4" class="nav nav-tabs">
+            <li class="active">
+                <a href="#myTab4_example1" data-toggle="tab" aria-expanded="true">
+                   General Info
+                </a>
+            </li>
+            <li class="">
+                <a href="#myTab4_example2" data-toggle="tab" aria-expanded="false">
+                    Suject
+                </a>
+            </li>
+            <li class="">
+                <a href="#myTab4_example3" data-toggle="tab" aria-expanded="false">
+                    Action
+                </a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane fade active in" id="myTab4_example1">
+                <table class="table table-hover">
+                    <tbody>
+                    <tr>
+                        <th>Datedebut</th>
+                        <td>{{ entity.dateDebut|date('Y-m-d') }}</td>
+                    </tr>
+                    <tr>
+                        <th>Datefin</th>
+                        <td>{{ entity.dateFin|date('Y-m-d') }}</td>
+                    </tr>
+                    <tr>
+                        <th>Affect</th>
+                        <td>{{ entity.affect }}</td>
+                    </tr>
+                    <tr>
+                        <th>Technologie</th>
+                        <td>{{ entity.idTechnologie }}</td>
+                    </tr>
+                    <tr>
+                        <th>Departement</th>
+                        <td>{{ entity.idDepartement }}</td>
+                    </tr>
+                    <tr>
+                        <th>Type stage</th>
+                        <td>{{ entity.idTypestage }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="tab-pane fade" id="myTab4_example2">
+                <p>
+                    {{ entity.sujetStage }}
+                </p>
+                <br><br><br><br><br><br><br><br><br>
+
+            </div>
+            <div class="tab-pane fade" id="myTab4_example3">
+                <ul>
+                    <li>
+                        <a href="{{ path('admin_users_GestionStages') }}">
+                            Back to the list
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('Stage_edit', { 'id': entity.idStage }) }}">
+                            Edit
+                        </a>
+                    </li>
+                    <li>{{ form(delete_form) }}</li>
+                </ul>
+                <br><br>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block javascript %}
+{% endblock %}

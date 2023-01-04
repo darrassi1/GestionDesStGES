@@ -1,0 +1,95 @@
+
+{% block body %}
+    <script>
+        $(document).ready(function() {
+            $('#ajaxFormE').on('submit', function(e) {
+                e.preventDefault();
+                $.ajax({
+                    url:$(this).attr('action'),
+                    type:$(this).attr('method'),
+                    data: $(this).serialize(),
+                    beforeSend: function(){
+                        $('#orderModalcontent').html("waiting .............");
+                    }, success: function() {
+                        //$('#orderModal').hide();
+                        alert("succes");
+                    },
+                    complete: function(){
+                        alert("comple");
+                        $('#orderModal').hide();
+
+                    }
+                });
+
+            });
+
+        });
+
+    </script>
+    <div  id="tab2">
+        <div class="form_error"></div>
+        <form method="POST" id="ajaxFormE" action="{{path('GestionUsersEn_create')}}" {{ form_enctype(form) }}>
+            <div id="form_body">
+                <div class="col-sm-12">
+                    <div class="col-md-12">{{ form_errors(form) }}</div>
+                    <div class="bg-danger">{{ form_errors(form.nomEncadreur) }}</div>
+                    <div class="form-group input-group">
+                        {{ form_widget(form.nomEncadreur,  {'attr': {'placeholder':'nomEncadreur', 'title':'nomEncadreur', 'class':'form-control'}}) }}
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="bg-danger">{{ form_errors(form.prenomEncadreur) }}</div>
+                    <div class="form-group">
+                        {{ form_widget(form.prenomEncadreur,  {'attr': {'placeholder':'prenomEncadreur','title':'prenomEncadreur', 'class':'form-control'}}) }}
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="bg-danger">{{ form_errors(form.sexeEncadreur) }}</div>
+                    <div class="form-group">
+                        {{ form_widget(form.sexeEncadreur) }}
+                    </div>
+                </div>
+                <div class=col-sm-12">
+                    <div class="bg-danger">{{ form_errors(form.dateNaissance) }}</div>
+                    <div class="form-group">
+                        {{ form_widget(form.dateNaissance) }}
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="bg-danger">{{ form_errors(form.adresseEncadreur) }}</div>
+                    <div class="form-group">
+                        {{ form_widget(form.adresseEncadreur,  {'attr': {'placeholder':'adresseEncadreur','title':'adresseEncadreur', 'class':'form-control'}}) }}
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="bg-danger">{{ form_errors(form.gender) }}</div>
+                    <div class="form-group">
+                        {{ form_widget(form.gender,  {'attr': {'placeholder':'gender','title':'gender', 'class':'form-control'}}) }}
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="bg-danger">{{ form_errors(form.zipcode) }}</div>
+                    <div class="form-group">
+                        {{ form_widget(form.zipcode,  {'attr': {'placeholder':'zipcode','title':'zipcode', 'class':'form-control'}}) }}
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="bg-danger">{{ form_errors(form.city) }}</div>
+                    <div class="form-group">
+                        {{ form_widget(form.city,  {'attr': {'placeholder':'city','title':'city', 'class':'form-control'}}) }}
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="bg-danger">{{ form_errors(form.iduser) }}</div>
+                    <div class="form-group">
+                        {{ form_widget(form.iduser,  {'attr': {'title':'iduser', 'class':'form-control'}}) }}
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+            {{form_rest(form)}}
+        </form>
+    </div>
+
+{% endblock %}

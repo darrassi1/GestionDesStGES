@@ -1,0 +1,30 @@
+Specialite:
+    path:     /
+    defaults: { _controller: "AdminUsersBundle:Specialite:index" }
+
+Specialite_show:
+    path:     /{id}/show
+    defaults: { _controller: "AdminUsersBundle:Specialite:show" }
+
+Specialite_new:
+    path:     /new
+    defaults: { _controller: "AdminUsersBundle:Specialite:new" }
+
+Specialite_create:
+    path:     /create
+    defaults: { _controller: "AdminUsersBundle:Specialite:create" }
+    methods:  POST
+
+Specialite_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AdminUsersBundle:Specialite:edit" }
+
+Specialite_update:
+    path:     /{id}/update
+    defaults: { _controller: "AdminUsersBundle:Specialite:update" }
+    methods:  [POST, PUT]
+
+Specialite_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AdminUsersBundle:Specialite:delete" }
+    methods:  [POST, DELETE]

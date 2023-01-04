@@ -1,0 +1,32 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Departement</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Iddepartement</th>
+                <td>{{ entity.idDepartement }}</td>
+            </tr>
+            <tr>
+                <th>Departement</th>
+                <td>{{ entity.departement }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('admin_users_GestionRessources') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('Departement_edit', { 'id': entity.idDepartement }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

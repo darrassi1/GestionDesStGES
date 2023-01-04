@@ -1,0 +1,30 @@
+Departement:
+    path:     /
+    defaults: { _controller: "AdminUsersBundle:Departement:index" }
+
+Departement_show:
+    path:     /{id}/show
+    defaults: { _controller: "AdminUsersBundle:Departement:show" }
+
+Departement_new:
+    path:     /new
+    defaults: { _controller: "AdminUsersBundle:Departement:new" }
+
+Departement_create:
+    path:     /create
+    defaults: { _controller: "AdminUsersBundle:Departement:create" }
+    methods:  POST
+
+Departement_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AdminUsersBundle:Departement:edit" }
+
+Departement_update:
+    path:     /{id}/update
+    defaults: { _controller: "AdminUsersBundle:Departement:update" }
+    methods:  [POST, PUT]
+
+Departement_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AdminUsersBundle:Departement:delete" }
+    methods:  [POST, DELETE]

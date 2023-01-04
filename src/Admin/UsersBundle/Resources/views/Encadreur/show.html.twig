@@ -1,0 +1,48 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Encadreur</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Ncin</th>
+                <td>{{ entity.ncin }}</td>
+            </tr>
+            <tr>
+                <th>Nomencadreur</th>
+                <td>{{ entity.nomEncadreur }}</td>
+            </tr>
+            <tr>
+                <th>Prenomencadreur</th>
+                <td>{{ entity.prenomEncadreur }}</td>
+            </tr>
+            <tr>
+                <th>Sexeencadreur</th>
+                <td>{{ entity.sexeEncadreur }}</td>
+            </tr>
+            <tr>
+                <th>Datenaissance</th>
+                <td>{{ entity.dateNaissance|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Adresseencadreur</th>
+                <td>{{ entity.adresseEncadreur }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('GestionUsersEn') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('GestionUsersEn_edit', { 'id': entity.ncin }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}
