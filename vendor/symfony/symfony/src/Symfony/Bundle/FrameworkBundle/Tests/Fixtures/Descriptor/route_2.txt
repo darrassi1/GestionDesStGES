@@ -1,0 +1,12 @@
+<comment>Path</comment>         /name/add
+<comment>Path Regex</comment>   #PATH_REGEX#
+<comment>Host</comment>         localhost
+<comment>Host Regex</comment>   #HOST_REGEX#
+<comment>Scheme</comment>       http|https
+<comment>Method</comment>       PUT|POST
+<comment>Class</comment>        Symfony\Bundle\FrameworkBundle\Tests\Console\Descriptor\RouteStub
+<comment>Defaults</comment>     NONE
+<comment>Requirements</comment> NO CUSTOM
+<comment>Options</comment>      compiler_class: Symfony\Component\Routing\RouteCompiler
+             opt1: val1
+             opt2: val2
