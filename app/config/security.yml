@@ -1,0 +1,41 @@
+security:
+  encoders:
+    FOS\UserBundle\Model\UserInterface: sha512
+
+  role_hierarchy:
+    ROLE_STUD: ROLE_USER
+    ROLE_PROF: ROLE_USER
+    ROLE_ADMIN: ROLE_ADMIN
+    ROLE_SUPER_ADMIN: ROLE_ADMIN
+
+  providers:
+    fos_userbundle:
+      id: fos_user.user_provider.username_email
+
+  firewalls:
+    dev:
+      pattern:  ^/(_(profiler|wdt)|css|images|js)/
+      security: false
+
+    main:
+      pattern: ^/
+      form_login:
+        provider: fos_userbundle
+        csrf_provider: form.csrf_provider
+        login_path: /login
+        check_path: /login_check
+        success_handler: redirect.after.login
+      logout:
+        path: /logout
+        target: /
+        success_handler: redirect.after.logout
+      anonymous:    true
+
+
+  access_control:
+    - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: ^/BackOffice_student, role: ROLE_STUD }
+    - { path: ^/crm, role: ROLE_PROF }
+    - { path: ^/BackOffice_Admin, role: ROLE_ADMIN }
