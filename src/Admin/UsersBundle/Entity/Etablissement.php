@@ -7,10 +7,10 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Departement
  *
- * @ORM\Table(name="departement")
+ * @ORM\Table(name="departementa")
  * @ORM\Entity
  */
-class Departement
+class Etablissement
 {
     /**
      * @var integer
@@ -19,14 +19,14 @@ class Departement
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $idDepartement;
+    private $idEtablissement;
 
     /**
      * @var string
      *
      * @ORM\Column(name="Departement", type="string", length=120, nullable=false)
      */
-    private $departement;
+    private $etablissement;
 
 
 
@@ -35,9 +35,9 @@ class Departement
      *
      * @return integer
      */
-    public function getIdDepartement()
+    public function getIdEtablissement()
     {
-        return $this->idDepartement;
+        return $this->idEtablissement;
     }
 
     /**
@@ -47,9 +47,9 @@ class Departement
      *
      * @return Departement
      */
-    public function setDepartement($departement)
+    public function setDepartement($etablissement)
     {
-        $this->departement = $departement;
+        $this->etablissement = $etablissement;
 
         return $this;
     }
@@ -59,13 +59,13 @@ class Departement
      *
      * @return string
      */
-    public function getDepartement()
+    public function getEtablissement()
     {
-        return $this->departement;
+        return $this->etablissement;
     }
 
     public function __toString()
     {
-        return $this->getDepartement();
+        return $this->getEtablissement();
     }
 }

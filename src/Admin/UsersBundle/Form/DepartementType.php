@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class DepartementType extends AbstractType
+class EtablissementType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,10 +15,9 @@ class DepartementType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('departement','text', ['attr' => ['class' => 'form-control','placeholder' => 'Nom Document']])
-        ;
+            ->add('departement', 'text', ['attr' => ['class' => 'form-control', 'placeholder' => 'Nom Document']]);
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */

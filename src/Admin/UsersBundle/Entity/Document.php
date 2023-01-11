@@ -70,7 +70,7 @@ class Document
      *   @ORM\JoinColumn(name="Id_typeDocument", referencedColumnName="Id_typeDocument")
      * })
      */
-    private $idTypedocument;
+
 
 
 
@@ -211,20 +211,4 @@ class Document
      *
      * @return Document
      */
-    public function setIdTypedocument(\Admin\UsersBundle\Entity\TypeDocument $idTypedocument = null)
-    {
-        $this->idTypedocument = $idTypedocument;
-
-        return $this;
-    }
-
-    /**
-     * Get idTypedocument
-     *
-     * @return \Admin\UsersBundle\Entity\TypeDocument
-     */
-    public function getIdTypedocument()
-    {
-        return $this->idTypedocument;
-    }
 }

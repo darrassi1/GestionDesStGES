@@ -5,37 +5,37 @@ namespace Admin\UsersBundle\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-use Admin\UsersBundle\Entity\Specialite;
-use Admin\UsersBundle\Form\SpecialiteType;
+use Admin\UsersBundle\Entity\Filliere;
+use Admin\UsersBundle\Form\FilliereType;
 
 /**
- * Specialite controller.
+ * Filliere controller.
  *
  */
-class SpecialiteController extends Controller
+class FilliereController extends Controller
 {
 
     /**
-     * Lists all Specialite entities.
+     * Lists all Filliere entities.
      *
      */
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('AdminUsersBundle:Specialite')->findAll();
+        $entities = $em->getRepository('AdminUsersBundle:Filliere')->findAll();
 
-        return $this->render('AdminUsersBundle:Specialite:index.html.twig', array(
+        return $this->render('AdminUsersBundle:Filliere:index.html.twig', array(
             'entities' => $entities,
         ));
     }
     /**
-     * Creates a new Specialite entity.
+     * Creates a new Filliere entity.
      *
      */
     public function createAction(Request $request)
     {
-        $entity = new Specialite();
+        $entity = new Filliere();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
@@ -44,26 +44,26 @@ class SpecialiteController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('Specialite_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('Filliere_show', array('id' => $entity->getIdFilliere())));
         }
 
-        return $this->render('AdminUsersBundle:Specialite:new.html.twig', array(
+        return $this->render('AdminUsersBundle:Filliere:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
     }
 
     /**
-     * Creates a form to create a Specialite entity.
+     * Creates a form to create a Filliere entity.
      *
-     * @param Specialite $entity The entity
+     * @param Filliere $entity The entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(Specialite $entity)
+    private function createCreateForm(Filliere $entity)
     {
-        $form = $this->createForm(new SpecialiteType(), $entity, array(
-            'action' => $this->generateUrl('Specialite_create'),
+        $form = $this->createForm(new FilliereType(), $entity, array(
+            'action' => $this->generateUrl('Filliere_create'),
             'method' => 'POST',
         ));
 
@@ -73,60 +73,60 @@ class SpecialiteController extends Controller
     }
 
     /**
-     * Displays a form to create a new Specialite entity.
+     * Displays a form to create a new Filliere entity.
      *
      */
     public function newAction()
     {
-        $entity = new Specialite();
+        $entity = new Filliere();
         $form   = $this->createCreateForm($entity);
 
-        return $this->render('AdminUsersBundle:Specialite:new.html.twig', array(
+        return $this->render('AdminUsersBundle:Filliere:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
     }
 
     /**
-     * Finds and displays a Specialite entity.
+     * Finds and displays a Filliere entity.
      *
      */
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('AdminUsersBundle:Specialite')->find($id);
+        $entity = $em->getRepository('AdminUsersBundle:Filliere')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Specialite entity.');
+            throw $this->createNotFoundException('Unable to find Filliere entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('AdminUsersBundle:Specialite:show.html.twig', array(
+        return $this->render('AdminUsersBundle:Filliere:show.html.twig', array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
         ));
     }
 
     /**
-     * Displays a form to edit an existing Specialite entity.
+     * Displays a form to edit an existing Filliere entity.
      *
      */
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('AdminUsersBundle:Specialite')->find($id);
+        $entity = $em->getRepository('AdminUsersBundle:Filliere')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Specialite entity.');
+            throw $this->createNotFoundException('Unable to find Filliere entity.');
         }
 
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('AdminUsersBundle:Specialite:edit.html.twig', array(
+        return $this->render('AdminUsersBundle:Filliere:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -134,16 +134,16 @@ class SpecialiteController extends Controller
     }
 
     /**
-    * Creates a form to edit a Specialite entity.
-    *
-    * @param Specialite $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
-    private function createEditForm(Specialite $entity)
+     * Creates a form to edit a Filliere entity.
+     *
+     * @param Filliere $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createEditForm(Filliere $entity)
     {
-        $form = $this->createForm(new SpecialiteType(), $entity, array(
-            'action' => $this->generateUrl('Specialite_update', array('id' => $entity->getId())),
+        $form = $this->createForm(new FilliereType(), $entity, array(
+            'action' => $this->generateUrl('Filliere_update', array('id' => $entity->getIdFilliere())),
             'method' => 'PUT',
         ));
 
@@ -152,17 +152,17 @@ class SpecialiteController extends Controller
         return $form;
     }
     /**
-     * Edits an existing Specialite entity.
+     * Edits an existing Filliere entity.
      *
      */
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('AdminUsersBundle:Specialite')->find($id);
+        $entity = $em->getRepository('AdminUsersBundle:Filliere')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Specialite entity.');
+            throw $this->createNotFoundException('Unable to find Filliere entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -172,17 +172,17 @@ class SpecialiteController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('Specialite_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('Filliere_edit', array('id' => $id)));
         }
 
-        return $this->render('AdminUsersBundle:Specialite:edit.html.twig', array(
+        return $this->render('AdminUsersBundle:Filliere:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
     /**
-     * Deletes a Specialite entity.
+     * Deletes a Filliere entity.
      *
      */
     public function deleteAction(Request $request, $id)
@@ -192,21 +192,21 @@ class SpecialiteController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('AdminUsersBundle:Specialite')->find($id);
+            $entity = $em->getRepository('AdminUsersBundle:Filliere')->find($id);
 
             if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Specialite entity.');
+                throw $this->createNotFoundException('Unable to find Filliere entity.');
             }
 
             $em->remove($entity);
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('Specialite'));
+        return $this->redirect($this->generateUrl('Filliere'));
     }
 
     /**
-     * Creates a form to delete a Specialite entity by id.
+     * Creates a form to delete a Filliere entity by id.
      *
      * @param mixed $id The entity id
      *
@@ -215,10 +215,9 @@ class SpecialiteController extends Controller
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('Specialite_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('Filliere_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
-            ->getForm()
-        ;
+            ->getForm();
     }
 }

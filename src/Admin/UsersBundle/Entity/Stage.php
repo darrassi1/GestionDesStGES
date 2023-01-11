@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Stage
  *
- * @ORM\Table(name="stagea", indexes={@ORM\Index(name="Id_technologie", columns={"Id_technologie"}), @ORM\Index(name="Id_TypeStage", columns={"Id_TypeStage"}), @ORM\Index(name="Id_Departement", columns={"Id_Departement"})})
+ * @ORM\Table(name="stagea", indexes={@ORM\Index(name="Id_technologie", columns={"Id_technologie"}), @ORM\Index(name="Id_TypeStage", columns={"Id_TypeStage"}), @ORM\Index(name="Id_Etablissement", columns={"Id_Etablissement"})})
  * @ORM\Entity
  */
 class Stage
@@ -57,17 +57,16 @@ class Stage
      *   @ORM\JoinColumn(name="Id_technologie", referencedColumnName="Id_Technologie")
      * })
      */
-    private $idTechnologie;
 
     /**
-     * @var \Departement
+     * @var \Etablissement
      *
-     * @ORM\ManyToOne(targetEntity="Departement")
+     * @ORM\ManyToOne(targetEntity="Etablissement")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="Id_Departement", referencedColumnName="Id_Departement")
+     *   @ORM\JoinColumn(name="Id_Etablissement", referencedColumnName="Id_Etablissement")
      * })
      */
-    private $idDepartement;
+    private $idEtablissement;
 
     /**
      * @var \TypeStage
@@ -77,7 +76,6 @@ class Stage
      *   @ORM\JoinColumn(name="Id_TypeStage", referencedColumnName="Id_TypeStage")
      * })
      */
-    private $idTypestage;
 
 
 
@@ -194,45 +192,37 @@ class Stage
      *
      * @return Stage
      */
-    public function setIdTechnologie(\Admin\UsersBundle\Entity\Technologie $idTechnologie = null)
-    {
-        $this->idTechnologie = $idTechnologie;
 
-        return $this;
-    }
 
     /**
      * Get idTechnologie
      *
      * @return \Admin\UsersBundle\Entity\Technologie
      */
-    public function getIdTechnologie()
-    {
-        return $this->idTechnologie;
-    }
+
 
     /**
-     * Set idDepartement
+     * Set idEtablissement
      *
-     * @param \Admin\UsersBundle\Entity\Departement $idDepartement
+     * @param \Admin\UsersBundle\Entity\Etablissement $idEtablissement
      *
      * @return Stage
      */
-    public function setIdDepartement(\Admin\UsersBundle\Entity\Departement $idDepartement = null)
+    public function setIdEtablissement(\Admin\UsersBundle\Entity\Etablissement $idEtablissement = null)
     {
-        $this->idDepartement = $idDepartement;
+        $this->idEtablissement = $idEtablissement;
 
         return $this;
     }
 
     /**
-     * Get idDepartement
+     * Get idEtablissement
      *
-     * @return \Admin\UsersBundle\Entity\Departement
+     * @return \Admin\UsersBundle\Entity\Etablissement
      */
-    public function getIdDepartement()
+    public function getIdEtablissement()
     {
-        return $this->idDepartement;
+        return $this->idEtablissement;
     }
 
     /**
@@ -242,25 +232,10 @@ class Stage
      *
      * @return Stage
      */
-    public function setIdTypestage(\Admin\UsersBundle\Entity\TypeStage $idTypestage = null)
-    {
-        $this->idTypestage = $idTypestage;
 
-        return $this;
-    }
-
-    /**
-     * Get idTypestage
-     *
-     * @return \Admin\UsersBundle\Entity\TypeStage
-     */
-    public function getIdTypestage()
-    {
-        return $this->idTypestage;
-    }
 
     public function __toString()
     {
-        return $this->getIdStage()."";
+        return $this->getIdStage() . "";
     }
 }
