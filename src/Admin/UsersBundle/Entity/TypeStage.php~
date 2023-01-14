@@ -1,0 +1,33 @@
+<?php
+
+namespace Admin\UsersBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * TypeStage
+ *
+ * @ORM\Table(name="type_stage")
+ * @ORM\Entity
+ */
+class TypeStage
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="Id_TypeStage", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idTypestage;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Type_Stage", type="string", length=120, nullable=false)
+     */
+    private $typeStage;
+
+
+}
+

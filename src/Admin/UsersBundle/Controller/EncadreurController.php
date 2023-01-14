@@ -66,6 +66,7 @@ class EncadreurController extends Controller
 
         if (!$request->isXmlHttpRequest()) {
             return new JsonResponse(array('message' => 'You can access this only using Ajax!'), 400);
+            
         }
 
         $form = $formFactory->createForm();
@@ -80,11 +81,10 @@ class EncadreurController extends Controller
         }
 
         $response = new JsonResponse(
-            array($form['username'] => 'Error'),
-            400
-        );
+            array(     $form['username'] => 'Error'), 400);
 
         return $response;
+
     }
 
     /**
@@ -168,12 +168,12 @@ class EncadreurController extends Controller
     }
 
     /**
-     * Creates a form to edit a Encadreur entity.
-     *
-     * @param Encadreur $entity The entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
+    * Creates a form to edit a Encadreur entity.
+    *
+    * @param Encadreur $entity The entity
+    *
+    * @return \Symfony\Component\Form\Form The form
+    */
     private function createEditForm(Encadreur $entity)
     {
         $form = $this->createForm(new EncadreurType(), $entity, array(
@@ -252,6 +252,7 @@ class EncadreurController extends Controller
             ->setAction($this->generateUrl('GestionUsersEn_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
-            ->getForm();
+            ->getForm()
+        ;
     }
 }

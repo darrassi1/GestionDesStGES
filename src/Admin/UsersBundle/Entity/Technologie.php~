@@ -1,0 +1,33 @@
+<?php
+
+namespace Admin\UsersBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Technologie
+ *
+ * @ORM\Table(name="technologie")
+ * @ORM\Entity
+ */
+class Technologie
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="Id_ Technologie", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idTechnologie;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Type_Technologie", type="string", length=120, nullable=false)
+     */
+    private $typeTechnologie;
+
+
+}
+

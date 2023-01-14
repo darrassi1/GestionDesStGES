@@ -1,0 +1,60 @@
+<?php
+
+namespace Admin\UsersBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Soutanance
+ *
+ * @ORM\Table(name="soutanance", indexes={@ORM\Index(name="Id_TypeSoutenance", columns={"Id_TypeSoutenance"}), @ORM\Index(name="Id_Stage", columns={"Id_Stage"})})
+ * @ORM\Entity
+ */
+class Soutanance
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="Id_Soutenance", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idSoutenance;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="Date_Soutenance", type="date", nullable=false)
+     */
+    private $dateSoutenance;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Salle_Soutenance", type="string", length=10, nullable=false)
+     */
+    private $salleSoutenance;
+
+    /**
+     * @var \TypeSoutanance
+     *
+     * @ORM\ManyToOne(targetEntity="TypeSoutanance")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Id_TypeSoutenance", referencedColumnName="Id_TypeSoutenance")
+     * })
+     */
+    private $idTypesoutenance;
+
+    /**
+     * @var \Stage
+     *
+     * @ORM\ManyToOne(targetEntity="Stage")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Id_Stage", referencedColumnName="Id_Stage")
+     * })
+     */
+    private $idStage;
+
+
+}
+

@@ -1,0 +1,77 @@
+<?php
+
+namespace Admin\UsersBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Document
+ *
+ * @ORM\Table(name="document", indexes={@ORM\Index(name="NCINET", columns={"NCINET", "NCINED"}), @ORM\Index(name="NCINED", columns={"NCINED"}), @ORM\Index(name="Id_typeDocument", columns={"Id_typeDocument"}), @ORM\Index(name="IDX_D8698A76E6D371F6", columns={"NCINET"})})
+ * @ORM\Entity
+ */
+class Document
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="Id_Document", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idDocument;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Nom_Document", type="string", length=120, nullable=false)
+     */
+    private $nomDocument;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Chemin_Document", type="string", length=120, nullable=false)
+     */
+    private $cheminDocument;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="Date__Document", type="date", nullable=false)
+     */
+    private $dateDocument;
+
+    /**
+     * @var \Etudiant
+     *
+     * @ORM\ManyToOne(targetEntity="Etudiant")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="NCINED", referencedColumnName="NCIN")
+     * })
+     */
+    private $ncined;
+
+    /**
+     * @var \Encadreur
+     *
+     * @ORM\ManyToOne(targetEntity="Encadreur")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="NCINET", referencedColumnName="NCIN")
+     * })
+     */
+    private $ncinet;
+
+    /**
+     * @var \TypeDocument
+     *
+     * @ORM\ManyToOne(targetEntity="TypeDocument")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Id_typeDocument", referencedColumnName="Id_typeDocument")
+     * })
+     */
+    private $idTypedocument;
+
+
+}
+

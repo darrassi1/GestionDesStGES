@@ -5,37 +5,37 @@ namespace Admin\UsersBundle\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-use Admin\UsersBundle\Entity\Etablissement;
-use Admin\UsersBundle\Form\EtablissementType;
+use Admin\UsersBundle\Entity\Departement;
+use Admin\UsersBundle\Form\DepartementType;
 
 /**
- * Etablissement controller.
+ * Departement controller.
  *
  */
-class EtablissementController extends Controller
+class DepartementController extends Controller
 {
 
     /**
-     * Lists all Etablissement entities.
+     * Lists all Departement entities.
      *
      */
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('AdminUsersBundle:Etablissement')->findAll();
+        $entities = $em->getRepository('AdminUsersBundle:Departement')->findAll();
 
-        return $this->render('AdminUsersBundle:Etablissement:index.html.twig', array(
+        return $this->render('AdminUsersBundle:Departement:index.html.twig', array(
             'entities' => $entities,
         ));
     }
     /**
-     * Creates a new Etablissement entity.
+     * Creates a new Departement entity.
      *
      */
     public function createAction(Request $request)
     {
-        $entity = new Etablissement();
+        $entity = new Departement();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
@@ -44,26 +44,26 @@ class EtablissementController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('Etablissement_show', array('id' => $entity->getIdEtablissement())));
+            return $this->redirect($this->generateUrl('Departement_show', array('id' => $entity->getId())));
         }
 
-        return $this->render('AdminUsersBundle:Etablissement:new.html.twig', array(
+        return $this->render('AdminUsersBundle:Departement:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
     }
 
     /**
-     * Creates a form to create a Etablissement entity.
+     * Creates a form to create a Departement entity.
      *
-     * @param Etablissement $entity The entity
+     * @param Departement $entity The entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(Etablissement $entity)
+    private function createCreateForm(Departement $entity)
     {
-        $form = $this->createForm(new Etablissement(), $entity, array(
-            'action' => $this->generateUrl('Etablissement_create'),
+        $form = $this->createForm(new DepartementType(), $entity, array(
+            'action' => $this->generateUrl('Departement_create'),
             'method' => 'POST',
         ));
 
@@ -73,60 +73,60 @@ class EtablissementController extends Controller
     }
 
     /**
-     * Displays a form to create a new Etablissement entity.
+     * Displays a form to create a new Departement entity.
      *
      */
     public function newAction()
     {
-        $entity = new Etablissement();
+        $entity = new Departement();
         $form   = $this->createCreateForm($entity);
 
-        return $this->render('AdminUsersBundle:Etablissement:new.html.twig', array(
+        return $this->render('AdminUsersBundle:Departement:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
     }
 
     /**
-     * Finds and displays a Etablissement entity.
+     * Finds and displays a Departement entity.
      *
      */
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('AdminUsersBundle:Etablissement')->find($id);
+        $entity = $em->getRepository('AdminUsersBundle:Departement')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Etablissement entity.');
+            throw $this->createNotFoundException('Unable to find Departement entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('AdminUsersBundle:Etablissement:show.html.twig', array(
+        return $this->render('AdminUsersBundle:Departement:show.html.twig', array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
         ));
     }
 
     /**
-     * Displays a form to edit an existing Etablissement entity.
+     * Displays a form to edit an existing Departement entity.
      *
      */
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('AdminUsersBundle:Etablissement')->find($id);
+        $entity = $em->getRepository('AdminUsersBundle:Departement')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Etablissement entity.');
+            throw $this->createNotFoundException('Unable to find Departement entity.');
         }
 
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('AdminUsersBundle:Etablissement:edit.html.twig', array(
+        return $this->render('AdminUsersBundle:Departement:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -134,16 +134,16 @@ class EtablissementController extends Controller
     }
 
     /**
-     * Creates a form to edit a Etablissement entity.
-     *
-     * @param Etablissement $entity The entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createEditForm(Etablissement $entity)
+    * Creates a form to edit a Departement entity.
+    *
+    * @param Departement $entity The entity
+    *
+    * @return \Symfony\Component\Form\Form The form
+    */
+    private function createEditForm(Departement $entity)
     {
-        $form = $this->createForm(new EtablissementType(), $entity, array(
-            'action' => $this->generateUrl('Etablissement_update', array('id' => $entity->getIdEtablissement())),
+        $form = $this->createForm(new DepartementType(), $entity, array(
+            'action' => $this->generateUrl('Departement_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
@@ -152,17 +152,17 @@ class EtablissementController extends Controller
         return $form;
     }
     /**
-     * Edits an existing Etablissement entity.
+     * Edits an existing Departement entity.
      *
      */
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('AdminUsersBundle:Etablissement')->find($id);
+        $entity = $em->getRepository('AdminUsersBundle:Departement')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Etablissement entity.');
+            throw $this->createNotFoundException('Unable to find Departement entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -172,17 +172,17 @@ class EtablissementController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('Etablissement_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('Departement_edit', array('id' => $id)));
         }
 
-        return $this->render('AdminUsersBundle:Etablissement:edit.html.twig', array(
+        return $this->render('AdminUsersBundle:Departement:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
     /**
-     * Deletes a Etablissement entity.
+     * Deletes a Departement entity.
      *
      */
     public function deleteAction(Request $request, $id)
@@ -192,21 +192,21 @@ class EtablissementController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('AdminUsersBundle:Etablissement')->find($id);
+            $entity = $em->getRepository('AdminUsersBundle:Departement')->find($id);
 
             if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Etablissement entity.');
+                throw $this->createNotFoundException('Unable to find Departement entity.');
             }
 
             $em->remove($entity);
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('Etablissement'));
+        return $this->redirect($this->generateUrl('Departement'));
     }
 
     /**
-     * Creates a form to delete a Etablissement entity by id.
+     * Creates a form to delete a Departement entity by id.
      *
      * @param mixed $id The entity id
      *
@@ -215,9 +215,10 @@ class EtablissementController extends Controller
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('Etablissement_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('Departement_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
-            ->getForm();
+            ->getForm()
+        ;
     }
 }

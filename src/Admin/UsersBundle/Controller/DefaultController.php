@@ -1,7 +1,6 @@
 <?php
 
 namespace Admin\UsersBundle\Controller;
-
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -38,7 +37,7 @@ class DefaultController extends Controller
         $statement = $connection->prepare("SELECT count(*) as nbr,MONTH(`Date_Debut`) as month FROM `stagea` WHERE affect = 1 GROUP BY MONTH(`Date_Debut`)");
         $statement->execute();
         $stage1 = $statement->fetchAll();
-        return $this->render('AdminUsersBundle:Default:index.html.twig', array(
+        return $this->render('AdminUsersBundle:Default:index.html.twig',array(
             'ThisMonth' => $ThisMonth,
             'LastMonth' => $LastMonth,
             'admin' => $admis,
@@ -53,16 +52,16 @@ class DefaultController extends Controller
         $user = $this->container->get('security.context')->getToken()->getUser();
 
         $em = $this->getDoctrine()->getEntityManager();
-        $profile = $em->getRepository('AdminUsersBundle:Administration')->findBy(array('iduser' => $user->getId()));
+        $profile = $em->getRepository('AdminUsersBundle:Administration')->findBy( array('iduser' => $user->getId()));
 
-        return $this->render('AdminUsersBundle:Default:Profile.html.twig', array(
+        return $this->render('AdminUsersBundle:Default:Profile.html.twig',array(
             'profile' => $profile,
         ));
     }
-    public function  editAction($id, $firstname, $lastname, $birth, $emailaddress, $phone, $gender, $zipcode, $city, $password)
+    public function  editAction($id,$firstname,$lastname,$birth,$emailaddress,$phone,$gender,$zipcode,$city,$password)
     {
         $em = $this->getDoctrine()->getManager();
-        /*    $qb = $em->createQueryBuilder()->update('AdminUsersBundle:Administration', 'u')
+        $qb = $em->createQueryBuilder()->update('AdminUsersBundle:Administration', 'u')
             ->set('u.firstname','?1')
             ->set('u.lastname','?2')
             ->set('u.birth','?3')
@@ -82,7 +81,7 @@ class DefaultController extends Controller
             ->setParameter('7',  $zipcode)
             ->setParameter('8',  $city)
             ->getQuery();
-        $qb->execute();*/
+        $qb->execute();
 
         $response = new \Symfony\Component\HttpFoundation\Response(json_encode("1"));
 
@@ -154,5 +153,7 @@ class DefaultController extends Controller
         return $this->render('AdminUsersBundle:Default:Gestionsoutenances.html.twig', array(
             'entities' => $entities,
         ));
+
     }
+
 }

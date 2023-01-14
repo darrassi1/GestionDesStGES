@@ -7,9 +7,9 @@ use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
- * @ORM\Table(name="tuto_usera")
- */
+* @ORM\Entity
+* @ORM\Table(name="tuto_usera")
+*/
 class User extends BaseUser
 {
    /**
@@ -19,14 +19,10 @@ class User extends BaseUser
     */
    protected $id;
 
-   public function getUserId()
-   {
-      return $this->id;
-   }
    public function __construct()
    {
-      parent::__construct();
-      // your own logic
+       parent::__construct();
+       // your own logic
    }
 
    public function __toString()

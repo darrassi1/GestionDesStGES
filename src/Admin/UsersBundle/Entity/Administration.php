@@ -92,6 +92,7 @@ class Administration
      *   @ORM\JoinColumn(name="idUser", referencedColumnName="id")
      * })
      */
+    private $iduser;
 
 
 
@@ -328,4 +329,20 @@ class Administration
      *
      * @return Administration
      */
+    public function setIduser(\Admin\UsersBundle\Entity\User $id = null)
+    {
+        $this->iduser = $id;
+
+        return $this;
+    }
+
+    /**
+     * Get iduser
+     *
+     * @return \Admin\UsersBundle\Entity\User
+     */
+    public function getIduser()
+    {
+        return $this->iduser;
+    }
 }

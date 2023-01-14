@@ -24,8 +24,8 @@ class StageType extends AbstractType
                 'expanded' => true,
                 'required' => true
             ))
-            ->add('idTechnologie',null, ['attr' => ['class' => 'form-control','required' =>true]])
-            ->add('idDepartement',null, ['attr' => ['class' => 'form-control','required' =>true]])
+            ->add('idTechnologie',null, ['attr' => ['class' => 'form-control','placeholder' => 'Technologie "optional"']])
+            ->add('idDepartement',null, ['attr' => ['class' => 'form-control','required' =>true ,'placeholder' => 'Etablissemnt']])
             ->add('idTypestage',null, ['attr' => ['class' => 'form-control','required' =>true]])
         ;
     }

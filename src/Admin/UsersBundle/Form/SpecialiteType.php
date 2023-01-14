@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class DepartementType extends AbstractType
+class SpecialiteType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,7 +15,9 @@ class DepartementType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('departement','text', ['attr' => ['class' => 'form-control','placeholder' => 'Nom Document']])
+            ->add('specialite','text', ['attr' => ['class' => 'form-control','placeholder' => 'specialite']])
+            ->add('diplome','text', ['attr' => ['class' => 'form-control','placeholder' => 'diplome']])
+            ->add('idDepartement',['attr' => ['class' => 'form-control','placeholder' => 'Etablissemnt']])
         ;
     }
     
@@ -25,7 +27,7 @@ class DepartementType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Admin\UsersBundle\Entity\Departement'
+            'data_class' => 'Admin\UsersBundle\Entity\Specialite'
         ));
     }
 
@@ -34,6 +36,6 @@ class DepartementType extends AbstractType
      */
     public function getName()
     {
-        return 'admin_usersbundle_departement';
+        return 'admin_usersbundle_specialite';
     }
 }
