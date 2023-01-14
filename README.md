@@ -18,7 +18,7 @@ Serveur web (Apache, Nginx, etc.)
 3. Configurer les paramètres de connexion à la base de données dans le fichier .env
 4. Créer la base de données en exécutant la commande `php bin/console doctrine:database:create`
 5. Appliquer les migrations avec la commande `php bin/console doctrine:migrations:migrate`
-6. Lancer le serveur de développement avec la commande `php bin/console server:run`
+6. Lancer le serveur de développement avec la commande `php app/console server:run`
 
 ## Utilisation
 Une fois l'installation terminée, vous pouvez accéder à l'application en vous rendant sur l'URL http://localhost:8000 dans votre navigateur. Les utilisateurs peuvent alors ajouter, modifier et supprimer les stagiaires et les soutenances, ainsi que générer des rapports.
