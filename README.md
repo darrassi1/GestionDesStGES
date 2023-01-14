@@ -14,9 +14,9 @@ Serveur web (Apache, Nginx, etc.)
 
 ## Installation
 1. Télécharger ou cloner le dépôt sur votre ordinateur
-2. Installer les dépendances avec la commande composer install
+2. Installer les dépendances avec la commande `composer install`
 3. Configurer les paramètres de connexion à la base de données dans le fichier .env
-4. Créer la base de données en exécutant la commande php bin/console doctrine:database:create
+4. Créer la base de données en exécutant la commande `php bin/console doctrine:database:create`
 5. Appliquer les migrations avec la commande `php bin/console doctrine:migrations:migrate`
 6. Lancer le serveur de développement avec la commande `php bin/console server:run`
 
