@@ -3,9 +3,9 @@ Gestion de Stagiaires - Projet Symfony
 Ce projet a été créé pour gérer les stagiaires de l'Université privée de Fès. Il permet de programmer les soutenances des stagiaires ainsi que d'autres fonctionnalités liées à la gestion des stagiaires.
 
 ## Fonctionnalités
-1.Programmation des soutenances de stage
-2.Ajout et gestion des informations des stagiaires (nom, prénom, courriel, etc.)
-3.Gestion des tuteurs de stage (ajout, modification, suppression)
+1. Programmation des soutenances de stage
+2. Ajout et gestion des informations des stagiaires (nom, prénom, courriel, etc.)
+3. Gestion des tuteurs de stage (ajout, modification, suppression)
 
 ## Prérequis
 PHP 7.4 ou supérieur
