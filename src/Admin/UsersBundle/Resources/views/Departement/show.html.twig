@@ -1,44 +1,39 @@
 {% extends '::base.html.twig' %}
  {% block head %}
-            <style>
+         
+        {% endblock %}
+{% block body -%}
+   <style>
             table.record_properties {
 border-collapse: collapse;
 width: 100%;
 }
-
 table.record_properties th, td {
 border: 1px solid #ddd;
 padding: 8px;
 text-align: left;
 }
-
 table.record_properties th {
 background-color: #f2f2f2;
 font-weight: bold;
 }
-
 ul.record_actions {
 list-style-type: none;
 margin: 0;
 padding: 0;
 }
-
 ul.record_actions li {
 display: inline-block;
 margin-right: 10px;
 }
-
 ul.record_actions a {
 color: #333;
 text-decoration: none;
 }
-
 ul.record_actions a:hover {
 color: #0088cc;
 }
             </style>
-        {% endblock %}
-{% block body -%}
     <h1>Etablissement</h1>
         <head>
        
