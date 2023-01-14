@@ -55,7 +55,4 @@ class Encadreur
      * @ORM\Column(name="Adresse_Encadreur", type="string", length=120, nullable=false)
      */
     private $adresseEncadreur;
-
-
 }
-

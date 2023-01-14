@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class SpecialiteType extends AbstractType
+class FilliereType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,19 +15,18 @@ class SpecialiteType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('specialite','text', ['attr' => ['class' => 'form-control','placeholder' => 'specialite']])
-            ->add('diplome','text', ['attr' => ['class' => 'form-control','placeholder' => 'diplome']])
-            ->add('idDepartement')
-        ;
+            ->add('Filliere', 'text', ['attr' => ['class' => 'form-control', 'placeholder' => 'Filliere']])
+            ->add('diplome', 'text', ['attr' => ['class' => 'form-control', 'placeholder' => 'diplome']])
+            ->add('idDepartement');
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Admin\UsersBundle\Entity\Specialite'
+            'data_class' => 'Admin\UsersBundle\Entity\Filliere'
         ));
     }
 
@@ -36,6 +35,6 @@ class SpecialiteType extends AbstractType
      */
     public function getName()
     {
-        return 'admin_usersbundle_specialite';
+        return 'admin_usersbundle_filliere';
     }
 }

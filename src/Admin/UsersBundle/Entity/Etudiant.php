@@ -78,25 +78,11 @@ class Etudiant
     private $adresseEtudiant;
 
     /**
-     * @var \Departement
+     * @var \Etablissement
      *
      * @ORM\ManyToOne(targetEntity="Departement")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="Id_Departement", referencedColumnName="Id_Departement")
      * })
      */
-    private $idDepartement;
-
-    /**
-     * @var \Specialite
-     *
-     * @ORM\ManyToOne(targetEntity="Specialite")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="Id_Specialite", referencedColumnName="Id_Specialite")
-     * })
-     */
-    private $idSpecialite;
-
-
 }
-

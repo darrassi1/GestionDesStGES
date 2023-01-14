@@ -35,33 +35,7 @@ class Soutanance
      */
     private $salleSoutenance;
 
-    /**
-     * @var \TypeSoutanance
-     *
-     * @ORM\ManyToOne(targetEntity="TypeSoutanance")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="Id_TypeSoutenance", referencedColumnName="Id_TypeSoutenance")
-     * })
-     */
-    private $idTypesoutenance;
 
-    /**
-     * @var \Stage
-     *
-     * @ORM\ManyToOne(targetEntity="Stage")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="Id_Stage", referencedColumnName="Id_Stage")
-     * })
-     */
-    private $idStage;
-
-
-
-    /**
-     * Get idSoutenance
-     *
-     * @return integer
-     */
     public function getIdSoutenance()
     {
         return $this->idSoutenance;
@@ -113,53 +87,5 @@ class Soutanance
     public function getSalleSoutenance()
     {
         return $this->salleSoutenance;
-    }
-
-    /**
-     * Set idTypesoutenance
-     *
-     * @param \Admin\UsersBundle\Entity\TypeSoutanance $idTypesoutenance
-     *
-     * @return Soutanance
-     */
-    public function setIdTypesoutenance(\Admin\UsersBundle\Entity\TypeSoutanance $idTypesoutenance = null)
-    {
-        $this->idTypesoutenance = $idTypesoutenance;
-
-        return $this;
-    }
-
-    /**
-     * Get idTypesoutenance
-     *
-     * @return \Admin\UsersBundle\Entity\TypeSoutanance
-     */
-    public function getIdTypesoutenance()
-    {
-        return $this->idTypesoutenance;
-    }
-
-    /**
-     * Set idStage
-     *
-     * @param \Admin\UsersBundle\Entity\Stage $idStage
-     *
-     * @return Soutanance
-     */
-    public function setIdStage(\Admin\UsersBundle\Entity\Stage $idStage = null)
-    {
-        $this->idStage = $idStage;
-
-        return $this;
-    }
-
-    /**
-     * Get idStage
-     *
-     * @return \Admin\UsersBundle\Entity\Stage
-     */
-    public function getIdStage()
-    {
-        return $this->idStage;
     }
 }
